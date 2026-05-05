@@ -1,0 +1,289 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+
+body{
+  background:#f8f5f0;
+  /* padding-top: 10px; */
+  color:#333;
+}
+
+h2{
+  font-size:32px;
+  margin-bottom:20px;
+  color:#5a3921;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(255,255,255,0.95);
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  z-index:1000;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+  color:#7b4f2c;
+}
+
+.nav-links a{
+  margin:0 10px;
+  text-decoration:none;
+  color:#333;
+  font-weight:bold;
+}
+.nav-links a:hover{
+  color:#7b4f2c;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('images/hero.jpg') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.overlay{
+  background:rgba(255,255,255,0.85);
+  padding:50px;
+  border-radius:15px;
+  text-align:center;
+  max-width:700px;
+}
+
+.overlay h1{
+  font-size:42px;
+  margin-bottom:15px;
+  color:#5a3921;
+}
+
+ .hero-btn{
+  display:inline-block;
+  margin-top:20px;
+  background:#25D366;
+  color:white;
+  padding:14px 24px;
+  text-decoration:none;
+  border-radius:8px;
+} 
+
+/* FEATURES */
+.features{
+  padding:80px 20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  background:#f8f5f0;
+}
+
+.feature-box{
+  width:220px;
+  background:white;
+  border-radius:12px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.feature-box:hover{
+  transform:translateY(-8px);
+}
+
+.feature-box i{
+  font-size:28px;
+  margin-bottom:10px;
+  color:#7b4f2c;
+  background:#f1e7dc;
+  padding:15px;
+  border-radius:50%;
+}
+
+.feature-box h3{
+  margin:10px 0;
+  color:#5a3921;
+}
+
+.feature-box p{
+  font-size:14px;
+  color:#666;
+}
+
+/* GALLERY */
+.gallery{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.gallery-container{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.card{
+  width:220px;
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.card p{
+  padding:15px;
+  font-weight:bold;
+}
+
+/* Seo-text */
+ .seo-text{
+  padding:60px 20px;
+  max-width:800px;
+  margin:auto;
+  line-height:1.9;
+}
+
+.seo-text p{
+  margin-bottom:15px;
+}
+
+/* AREAS */
+.areas{
+  padding:80px 20px;
+  background:#f8f5f0;
+  text-align:center;
+}
+
+.area-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:30px;
+}
+
+.area-item{
+  background:white;
+  padding:15px 25px;
+  border-radius:10px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+  font-weight:bold;
+  color:#5a3921;
+  transition:0.3s;
+}
+
+.area-item:hover{
+  transform:translateY(-5px);
+}
+
+/* ABOUT */
+.about,.testimonials{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.about p,.testimonial-box{
+  max-width:700px;
+  margin:auto;
+  line-height:1.8;
+}
+
+/* FAQ */
+.faq{
+  padding:80px 20px;
+  max-width:800px;
+  margin:auto;
+}
+
+.faq h3{
+  margin-top:20px;
+  color:#5a3921;
+}
+
+.faq p{
+  color:#555;
+}
+
+/* FOOTER */
+footer{
+  background:#7b4f2c;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* FLOATING WHATSAPP */
+.floating-whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:60px;
+  height:60px;
+  background:#25D366;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:50%;
+  font-size:30px;
+  text-decoration:none;
+}
+.floating-whatsapp{
+  animation:float 2s infinite;
+}
+
+/* REVEAL ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+.card img{
+  transition:0.4s;
+}
+
+.card:hover img{
+  transform:scale(1.08);
+}
+.navbar.scrolled{
+  padding:12px 40px;
+  background:white;
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+@keyframes float{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-8px); }
+  100%{ transform:translateY(0); }
+}
