@@ -11,7 +11,7 @@ body{
   color:#333;
 }
 
-h2{
+h2 ,h1{
   font-size:32px;
   margin-bottom:20px;
   color:#5a3921;
@@ -196,6 +196,16 @@ h2{
   font-weight:bold;
   color:#5a3921;
   transition:0.3s;
+}
+.area-item a {
+  text-decoration: none;
+  display: inline-block;
+  color: #5a3921;
+}
+.area-item a:hover{
+  transform:translateY(-5px);
+  /* background:#7b4f2c; */
+  /* color:white; */
 }
 
 .area-item:hover{
