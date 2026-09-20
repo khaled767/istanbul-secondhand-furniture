@@ -155,6 +155,9 @@ def page_html(d, all_d):
         <a href="https://wa.me/{WA}?text={wa_text}" target="_blank" class="hero-btn" style="margin-top: 15px; display: inline-block;">
           <i class="fab fa-whatsapp"></i> WhatsApp ile Fiyat Al
         </a>
+        <a href="tel:{PHONE_TEL}" class="hero-btn" style="margin-top: 15px; display: inline-block; margin-left: 10px;">
+          <i class="fas fa-phone"></i> Hemen Ara
+        </a>
       </div>
 
       <h2 style="margin-top: 40px; text-align: left;">{name} Bölgesinde Satın Aldığımız Eşyalar</h2>
@@ -181,7 +184,7 @@ def page_html(d, all_d):
 
   <footer>
     <p><strong>MEDİNE MOBİLYA</strong> — {name} İkinci El Eşya Alım Satım</p>
-    <p>© 2026 Medine Mobilya | Tel: {PHONE_DISPLAY} | WhatsApp: 05386467971</p>
+    <p>© 2026 Medine Mobilya | Tel: <a href="tel:{PHONE_TEL}" style="color: inherit; text-decoration: underline;">{PHONE_DISPLAY}</a> | WhatsApp: 05386467971</p>
   </footer>
 
   <!-- lead tracking: WhatsApp/call conversion events + gclid/utm attribution -->
@@ -320,6 +323,46 @@ def inject_tracking(tag='  <script src="/tracking.js" defer></script>'):
     return touched
 
 
+def add_call_links():
+    """A lead-generation site with no tappable phone number throws away calls — and
+    the call_click conversion in tracking.js can never fire. Every page gets a "Hemen
+    Ara" button beside its WhatsApp button plus a tel: link in the footer, idempotently.
+    """
+    call_btn = (
+        '<a href="tel:{tel}" class="hero-btn" '
+        'style="margin-top: 15px; display: inline-block; margin-left: 10px;">'
+        '<i class="fas fa-phone"></i> Hemen Ara</a>'
+    ).format(tel=PHONE_TEL)
+    plain = f"Tel: {PHONE_DISPLAY}"
+    linked = f'Tel: <a href="tel:{PHONE_TEL}" style="color: inherit; text-decoration: underline;">{PHONE_DISPLAY}</a>'
+    touched = []
+
+    for path in sorted(glob_module.glob("*.html")) + sorted(glob_module.glob("*/index.html")):
+        if path.startswith("tools/"):
+            continue
+        body = open(path, encoding="utf-8").read()
+        new = body
+
+        # 1) beside the WhatsApp CTA in the price-quote box / hero
+        if 'class="hero-btn"' in new and 'tel:' not in new:
+            new = re.sub(
+                r'(<a\s+href="https://wa\.me/[^"]*"[^>]*class="hero-btn"[^>]*>.*?</a>)',
+                lambda m: m.group(1) + "\n        " + call_btn,
+                new, count=1, flags=re.S,
+            )
+
+        # 2) the footer phone number becomes tappable
+        if plain in new:
+            new = new.replace(plain, linked, 1)
+        elif 'tel:' not in new:
+            new = new.replace("</footer>", f"  <p>{linked}</p>\n  </footer>", 1)
+
+        if new != body:
+            open(path, "w", encoding="utf-8").write(new)
+            touched.append(path)
+    return touched
+
+
 def main():
     check = "--check" in sys.argv
     existing, generated, legacy = data()
@@ -370,6 +413,7 @@ def main():
 
     subprocess.run([sys.executable, "tools/make-404.py"], check=True)
     print(f"nearby block added to {inject_nearby_into_existing(all_d)} hand-written page copy(ies)")
+    print(f"call links added to {len(add_call_links())} page(s)")
     touched = inject_tracking()
     if touched:
         print(f"tracking script added to {len(touched)} page(s)")
