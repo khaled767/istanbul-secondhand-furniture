@@ -1,5 +1,52 @@
 {
   "_comment": "Single source of truth for the Medine Mobilya service areas. tools/make-district-pages.py generates one page per entry marked generated:true, rebuilds sitemap.xml and _redirects from this list, and updates the homepage area list; tools/make-404.py links every entry. 'existing' entries already shipped as hand-written pages and are never overwritten.",
+  "_comment_legacy": "URLs that were live before the May-2026 file rename and now 404. Google keeps re-crawling them (Search Console: Not found (404)), so each one 301s to the district page that answers the same intent — both the extensionless form Netlify's pretty URLs used to serve and the .html form.",
+  "legacy": [
+    {
+      "from": "avcilar",
+      "to": "avcilar-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "avcilar-ikinci-el-esya-alanlar",
+      "to": "avcilar-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "basaksehir",
+      "to": "basaksehir-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "beylikduzu",
+      "to": "beylikduzu-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "beylikduzu-ikinci-el-esya-alanlar",
+      "to": "beylikduzu-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "Buyukcekmece",
+      "to": "buyukcekmece-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "buyukcekmece",
+      "to": "buyukcekmece-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "catalca",
+      "to": "catalca-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "esenyurt",
+      "to": "esenyurt-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "florya",
+      "to": "florya-ikinci-el-esya-alim-satim"
+    },
+    {
+      "from": "kucukcekmece",
+      "to": "kucukcekmece-ikinci-el-esya-alim-satim"
+    }
+  ],
   "already_shipped_examples": [
     {
       "slug": "avcilar-ikinci-el-esya-alim-satim",

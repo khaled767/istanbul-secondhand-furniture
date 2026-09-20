@@ -44,7 +44,8 @@ def data():
         raw = json.load(fh)
     existing = [dict(d, status="existing") for d in raw["already_shipped_examples"]]
     generated = [dict(d, status="generated") for d in raw["districts"]]
-    return existing, generated
+    legacy = raw.get("legacy", [])
+    return existing, generated, legacy
 
 
 def nearby_of(d, all_d):
@@ -230,7 +231,7 @@ def sitemap(all_d):
     return "\n".join(lines)
 
 
-def redirects(all_d):
+def redirects(all_d, legacy):
     out = [
         "# Netlify redirects — Medine Mobilya (spotcuistanbul.com)",
         "#",
@@ -238,7 +239,12 @@ def redirects(all_d):
         "#    canonical tag and sitemap.xml both declare (/x), so Google consolidates",
         "#    the duplicate instead of choosing one, and old links keep working.",
         "# 2) /index.html 301s to / so the homepage has a single address.",
-        "# 3) The catch-all rewrite to /index.html (200) that used to be here was",
+        "# 3) URLs that were live before the May-2026 file rename (avcilar.html,",
+        "#    basaksehir.html, Buyukcekmece.html, …) 301 to the district that answers the",
+        "#    same intent. Search Console listed them as \"Not found (404)\" and kept",
+        "#    re-crawling them. Both the bare path Netlify's pretty URLs used to serve",
+        "#    and the .html path are covered.",
+        "# 4) The catch-all rewrite to /index.html (200) that used to be here was",
         "#    removed: it answered EVERY unknown URL with the homepage and HTTP 200,",
         "#    which is a soft 404 — Google can index it and it hides real 404s.",
         "#    Unmatched paths now fall through to /404.html with a real 404 status.",
@@ -248,9 +254,21 @@ def redirects(all_d):
         "#    keep returning 200 and the rule is ignored.",
         "",
     ]
+    known = {d["slug"] for d in all_d}
     for d in all_d:
         out.append(f"/{d['slug']}.html    /{d['slug']}    301!")
-    out += ["/index.html    /    301!", ""]
+    out.append("/index.html    /    301!")
+
+    if legacy:
+        out.append("")
+        out.append("# Pre-rename URLs (see note 3)")
+        for l in legacy:
+            if l["to"] not in known:
+                # a typo here would aim an old inbound link at a 404
+                raise SystemExit(f"legacy target {l['to']} is not a known district")
+            out.append(f"/{l['from']}    /{l['to']}    301!")
+            out.append(f"/{l['from']}.html    /{l['to']}    301!")
+    out.append("")
     return "\n".join(out)
 
 
@@ -285,8 +303,9 @@ def inject_nearby_into_existing(all_d):
 
 def main():
     check = "--check" in sys.argv
-    existing, generated = data()
+    existing, generated, legacy = data()
     all_d = sorted(existing + generated, key=lambda d: d["name"])
+    rule_count = len(all_d) + 1 + 2 * len(legacy)
 
     if check:
         problems = []
@@ -300,8 +319,8 @@ def main():
                         problems.append(f"wrong canonical in {p}")
         if open("sitemap.xml", encoding="utf-8").read().count("<loc>") != len(all_d) + 1:
             problems.append("sitemap URL count does not match the district list")
-        if open("_redirects", encoding="utf-8").read().count("301!") != len(all_d) + 1:
-            problems.append("redirect rule count does not match the district list")
+        if open("_redirects", encoding="utf-8").read().count("301!") != rule_count:
+            problems.append("redirect rule count does not match the district/legacy list")
         home = open("index.html", encoding="utf-8").read()
         if home.count('class="area-item"') != len(all_d):
             problems.append("homepage area list out of sync")
@@ -322,7 +341,7 @@ def main():
         print(f"  + {d['name']:16} -> {d['slug']}.html + /{d['slug']}/index.html")
 
     open("sitemap.xml", "w", encoding="utf-8").write(sitemap(all_d))
-    open("_redirects", "w", encoding="utf-8").write(redirects(all_d))
+    open("_redirects", "w", encoding="utf-8").write(redirects(all_d, legacy))
 
     home = open("index.html", encoding="utf-8").read()
     new_home, n = re.subn(r'      <div class="area-list">.*?\n      </div>', home_areas(all_d), home, flags=re.S)
@@ -332,7 +351,8 @@ def main():
 
     subprocess.run([sys.executable, "tools/make-404.py"], check=True)
     print(f"nearby block added to {inject_nearby_into_existing(all_d)} hand-written page copy(ies)")
-    print(f"\n{written} page(s) written, sitemap {len(all_d) + 1} URLs, {len(all_d) + 1} redirect rules, homepage list updated")
+    print(f"\n{written} page(s) written, sitemap {len(all_d) + 1} URLs, {rule_count} redirect rules "
+          f"({len(all_d) + 1} district + {2 * len(legacy)} pre-rename), homepage list updated")
 
 
 if __name__ == "__main__":

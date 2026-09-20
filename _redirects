@@ -4,7 +4,12 @@
 #    canonical tag and sitemap.xml both declare (/x), so Google consolidates
 #    the duplicate instead of choosing one, and old links keep working.
 # 2) /index.html 301s to / so the homepage has a single address.
-# 3) The catch-all rewrite to /index.html (200) that used to be here was
+# 3) URLs that were live before the May-2026 file rename (avcilar.html,
+#    basaksehir.html, Buyukcekmece.html, …) 301 to the district that answers the
+#    same intent. Search Console listed them as "Not found (404)" and kept
+#    re-crawling them. Both the bare path Netlify's pretty URLs used to serve
+#    and the .html path are covered.
+# 4) The catch-all rewrite to /index.html (200) that used to be here was
 #    removed: it answered EVERY unknown URL with the homepage and HTTP 200,
 #    which is a soft 404 — Google can index it and it hides real 404s.
 #    Unmatched paths now fall through to /404.html with a real 404 status.
@@ -54,3 +59,27 @@
 /sile-ikinci-el-esya-alim-satim.html    /sile-ikinci-el-esya-alim-satim    301!
 /sisli-ikinci-el-esya-alim-satim.html    /sisli-ikinci-el-esya-alim-satim    301!
 /index.html    /    301!
+
+# Pre-rename URLs (see note 3)
+/avcilar    /avcilar-ikinci-el-esya-alim-satim    301!
+/avcilar.html    /avcilar-ikinci-el-esya-alim-satim    301!
+/avcilar-ikinci-el-esya-alanlar    /avcilar-ikinci-el-esya-alim-satim    301!
+/avcilar-ikinci-el-esya-alanlar.html    /avcilar-ikinci-el-esya-alim-satim    301!
+/basaksehir    /basaksehir-ikinci-el-esya-alim-satim    301!
+/basaksehir.html    /basaksehir-ikinci-el-esya-alim-satim    301!
+/beylikduzu    /beylikduzu-ikinci-el-esya-alim-satim    301!
+/beylikduzu.html    /beylikduzu-ikinci-el-esya-alim-satim    301!
+/beylikduzu-ikinci-el-esya-alanlar    /beylikduzu-ikinci-el-esya-alim-satim    301!
+/beylikduzu-ikinci-el-esya-alanlar.html    /beylikduzu-ikinci-el-esya-alim-satim    301!
+/Buyukcekmece    /buyukcekmece-ikinci-el-esya-alim-satim    301!
+/Buyukcekmece.html    /buyukcekmece-ikinci-el-esya-alim-satim    301!
+/buyukcekmece    /buyukcekmece-ikinci-el-esya-alim-satim    301!
+/buyukcekmece.html    /buyukcekmece-ikinci-el-esya-alim-satim    301!
+/catalca    /catalca-ikinci-el-esya-alim-satim    301!
+/catalca.html    /catalca-ikinci-el-esya-alim-satim    301!
+/esenyurt    /esenyurt-ikinci-el-esya-alim-satim    301!
+/esenyurt.html    /esenyurt-ikinci-el-esya-alim-satim    301!
+/florya    /florya-ikinci-el-esya-alim-satim    301!
+/florya.html    /florya-ikinci-el-esya-alim-satim    301!
+/kucukcekmece    /kucukcekmece-ikinci-el-esya-alim-satim    301!
+/kucukcekmece.html    /kucukcekmece-ikinci-el-esya-alim-satim    301!
