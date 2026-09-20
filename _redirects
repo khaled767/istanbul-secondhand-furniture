@@ -1,1 +1,20 @@
-/*    /index.html   200
+# Netlify redirects — Medine Mobilya (spotcuistanbul.com)
+#
+# 1) The .html copy of every district page 301s to the clean URL that the
+#    canonical tag and sitemap.xml both declare (/x), so Google consolidates
+#    the duplicate instead of choosing one, and old links keep working.
+# 2) /index.html 301s to / so the homepage has a single address.
+# 3) The catch-all rewrite to /index.html (200) that used to be here was
+#    removed: it answered EVERY unknown URL with the homepage and HTTP 200,
+#    which is a soft 404 — Google can index it and it hides real 404s.
+#    Unmatched paths now fall through to /404.html with a real 404 status.
+
+/avcilar-ikinci-el-esya-alim-satim.html    /avcilar-ikinci-el-esya-alim-satim    301
+/basaksehir-ikinci-el-esya-alim-satim.html    /basaksehir-ikinci-el-esya-alim-satim    301
+/beylikduzu-ikinci-el-esya-alim-satim.html    /beylikduzu-ikinci-el-esya-alim-satim    301
+/buyukcekmece-ikinci-el-esya-alim-satim.html    /buyukcekmece-ikinci-el-esya-alim-satim    301
+/catalca-ikinci-el-esya-alim-satim.html    /catalca-ikinci-el-esya-alim-satim    301
+/esenyurt-ikinci-el-esya-alim-satim.html    /esenyurt-ikinci-el-esya-alim-satim    301
+/florya-ikinci-el-esya-alim-satim.html    /florya-ikinci-el-esya-alim-satim    301
+/kucukcekmece-ikinci-el-esya-alim-satim.html    /kucukcekmece-ikinci-el-esya-alim-satim    301
+/index.html    /    301
