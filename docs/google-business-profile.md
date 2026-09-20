@@ -25,17 +25,23 @@ footer'ı. Bir değeri burada değiştirirseniz **sitede de değiştirin**.
 
 ---
 
-## 2) Kategoriler
+## 2) الموقف التجاري — نقرأ منه كل شيء
+
+**نحن نشتري ولا نبيع.** لا نتعامل مع من يبحث عن شراء أثاث مستعمل؛ عميلنا هو من يريد
+البيع. كل نص، وكل كلمة مفتاحية، وكل بيان في الملف يجب أن يخدم هذا الاتجاه. لا
+تشغّل حملات تسوّق (Shopping/Performance Max) ولا تغذية منتجات: تلك تجلب مشترين.
+
+## 3) Kategoriler
 
 Google'ın kategori listesi kendi elinde; aşağıdakilerden **Google'ın sunduğu en yakın**
-olanları seçin. Öneri:
+olanı seçin. İşletme **ikinci el eşya satın alıyor**, bu yüzden:
 
-- Birincil kategori: `İkinci el mağazası` (alternatif: `Mobilya mağazası` — dükkândan
-  satış yapıyorsanız bu da doğru)
-- Ek kategoriler: `Mobilya mağazası`, `Beyaz eşya mağazası`
-
-Birden fazla kategori eklemek, "ikinci el eşya alan" aramasıyla "mobilya mağazası"
-aramasının ikisinde de görünmenizi sağlar.
+- Birincil kategori: `İkinci el mağazası` — Google'ın "eşya alan" işletmeler için sunduğu
+  en yakın kategori budur. Google'da "satın alıyor" diye bir kategori yok; bu yüzden
+  yönü kategoriyle değil **açıklama ve hizmetlerle** anlatmak gerekir (aşağıda öyle).
+- İkinci kategori olarak `Mobilya mağazası` **sadece** dükkândan müşteriye satış da
+  yapıyorsanız eklenir. Şu an sadece satın alıyorsanız eklemeyin — o kategori "mobilya
+  satan yer" arayanları getirir ve telefonu boşa meşgul eder.
 
 ---
 
