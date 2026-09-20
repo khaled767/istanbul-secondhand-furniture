@@ -13,6 +13,7 @@ districts, so the visible text is genuinely unique per page.
 
 The pages already shipped by hand (status "existing") are never overwritten.
 """
+import glob as glob_module
 import json
 import os
 import re
@@ -183,6 +184,9 @@ def page_html(d, all_d):
     <p>© 2026 Medine Mobilya | Tel: {PHONE_DISPLAY} | WhatsApp: 05386467971</p>
   </footer>
 
+  <!-- lead tracking: WhatsApp/call conversion events + gclid/utm attribution -->
+  <script src="/tracking.js" defer></script>
+
 </body>
 </html>
 """
@@ -301,6 +305,21 @@ def inject_nearby_into_existing(all_d):
     return touched
 
 
+def inject_tracking(tag='  <script src="/tracking.js" defer></script>'):
+    """Every page must load the lead-tracking script. Generated pages get it from the
+    template; the hand-written ones and 404.html are patched here, idempotently."""
+    touched = []
+    for path in sorted(glob_module.glob("*.html")) + sorted(glob_module.glob("*/index.html")):
+        if path.startswith("tools/"):
+            continue
+        body = open(path, encoding="utf-8").read()
+        if "tracking.js" in body or "</body>" not in body:
+            continue
+        open(path, "w", encoding="utf-8").write(body.replace("</body>", tag + "\n</body>", 1))
+        touched.append(path)
+    return touched
+
+
 def main():
     check = "--check" in sys.argv
     existing, generated, legacy = data()
@@ -351,6 +370,13 @@ def main():
 
     subprocess.run([sys.executable, "tools/make-404.py"], check=True)
     print(f"nearby block added to {inject_nearby_into_existing(all_d)} hand-written page copy(ies)")
+    touched = inject_tracking()
+    if touched:
+        print(f"tracking script added to {len(touched)} page(s)")
+    missing = [f for f in sorted(glob_module.glob("*.html")) + sorted(glob_module.glob("*/index.html"))
+               if "tracking.js" not in open(f, encoding="utf-8").read()]
+    if missing:
+        raise SystemExit(f"pages without the tracking script: {missing}")
     print(f"\n{written} page(s) written, sitemap {len(all_d) + 1} URLs, {rule_count} redirect rules "
           f"({len(all_d) + 1} district + {2 * len(legacy)} pre-rename), homepage list updated")
 
