@@ -1,0 +1,207 @@
+{
+  "_comment": "Single source of truth for the Medine Mobilya service areas. tools/make-district-pages.py generates one page per entry marked generated:true, rebuilds sitemap.xml and _redirects from this list, and updates the homepage area list; tools/make-404.py links every entry. 'existing' entries already shipped as hand-written pages and are never overwritten.",
+  "already_shipped_examples": [
+    { "slug": "avcilar-ikinci-el-esya-alim-satim", "name": "Avcılar", "status": "existing" },
+    { "slug": "basaksehir-ikinci-el-esya-alim-satim", "name": "Başakşehir", "status": "existing" },
+    { "slug": "beylikduzu-ikinci-el-esya-alim-satim", "name": "Beylikdüzü", "status": "existing" },
+    { "slug": "buyukcekmece-ikinci-el-esya-alim-satim", "name": "Büyükçekmece", "status": "existing" },
+    { "slug": "catalca-ikinci-el-esya-alim-satim", "name": "Çatalca", "status": "existing" },
+    { "slug": "esenyurt-ikinci-el-esya-alim-satim", "name": "Esenyurt", "status": "existing" },
+    { "slug": "florya-ikinci-el-esya-alim-satim", "name": "Florya", "status": "existing" },
+    { "slug": "kucukcekmece-ikinci-el-esya-alim-satim", "name": "Küçükçekmece", "status": "existing" }
+  ],
+  "districts": [
+    {
+      "slug": "arnavutkoy-ikinci-el-esya-alim-satim",
+      "name": "Arnavutköy",
+      "profile": "İlçede yeni yapılaşan site ve apartmanlarla müstakil yapılar bir arada bulunur; taşınma ve yenileme dönemlerinde ikinci el mobilya talebi yüksektir.",
+      "neighbors": "Arnavutköy; Başakşehir, Eyüpsultan, Çatalca ve Silivri ile komşudur."
+    },
+    {
+      "slug": "bagcilar-ikinci-el-esya-alim-satim",
+      "name": "Bağcılar",
+      "profile": "Yoğun apartman dokusu ve geniş aile yapısı nedeniyle koltuk takımı, yatak odası ve beyaz eşya alımında hareketli bir ilçedir.",
+      "neighbors": "Bağcılar; Bahçelievler, Güngören, Esenler, Küçükçekmece ve Başakşehir ile komşudur."
+    },
+    {
+      "slug": "bahcelievler-ikinci-el-esya-alim-satim",
+      "name": "Bahçelievler",
+      "profile": "Merkezi konumu ve eski apartman stoğu ile tadilat ve yenileme süreçlerinin sık yaşandığı bir ilçedir.",
+      "neighbors": "Bahçelievler; Bakırköy, Güngören, Bağcılar ve Küçükçekmece ile komşudur."
+    },
+    {
+      "slug": "bakirkoy-ikinci-el-esya-alim-satim",
+      "name": "Bakırköy",
+      "profile": "Sahil hattındaki nitelikli konutları ve iş yerleriyle bilinen ilçede hem ev hem ofis eşyası alımında yoğun talep görüyoruz.",
+      "neighbors": "Bakırköy; Bahçelievler, Küçükçekmece ve Zeytinburnu ile komşudur."
+    },
+    {
+      "slug": "bayrampasa-ikinci-el-esya-alim-satim",
+      "name": "Bayrampaşa",
+      "profile": "Karma kullanımlı yapıları ve sık taşınma hareketiyle bilinen ilçede hızlı alım talebi öne çıkar.",
+      "neighbors": "Bayrampaşa; Gaziosmanpaşa, Eyüpsultan, Esenler ve Zeytinburnu ile komşudur."
+    },
+    {
+      "slug": "besiktas-ikinci-el-esya-alim-satim",
+      "name": "Beşiktaş",
+      "profile": "Merkezi ve prestijli konutların bulunduğu ilçede yüksek segment ikinci el mobilya ve beyaz eşya alımı yapıyoruz.",
+      "neighbors": "Beşiktaş; Şişli, Kağıthane, Sarıyer ve Beyoğlu ile komşudur."
+    },
+    {
+      "slug": "beyoglu-ikinci-el-esya-alim-satim",
+      "name": "Beyoğlu",
+      "profile": "Tarihi dokusu ve apartman daireleriyle bilinen ilçede yenileme ve taşınma dönemlerinde eşya alımı yapıyoruz.",
+      "neighbors": "Beyoğlu; Beşiktaş, Şişli, Kağıthane ve Fatih ile komşudur."
+    },
+    {
+      "slug": "esenler-ikinci-el-esya-alim-satim",
+      "name": "Esenler",
+      "profile": "Yoğun apartman yerleşimi nedeniyle koltuk takımı, yatak odası ve beyaz eşya alımının en sık yapıldığı ilçelerden biridir.",
+      "neighbors": "Esenler; Bayrampaşa, Gaziosmanpaşa, Bağcılar ve Sultangazi ile komşudur."
+    },
+    {
+      "slug": "eyupsultan-ikinci-el-esya-alim-satim",
+      "name": "Eyüpsultan",
+      "profile": "Haliç kıyısındaki eski mahallelerle yeni site projelerinin bir arada olduğu ilçede her iki konut profiline de hizmet veriyoruz.",
+      "neighbors": "Eyüpsultan; Kağıthane, Gaziosmanpaşa, Bayrampaşa, Arnavutköy ve Sarıyer ile komşudur."
+    },
+    {
+      "slug": "fatih-ikinci-el-esya-alim-satim",
+      "name": "Fatih",
+      "profile": "Tarihi yarımadanın merkezinde yer alan ilçede apartman daireleri ve iş yerlerinden eşya alımı yapıyoruz.",
+      "neighbors": "Fatih; Beyoğlu, Zeytinburnu ve Eyüpsultan ile komşudur."
+    },
+    {
+      "slug": "gaziosmanpasa-ikinci-el-esya-alim-satim",
+      "name": "Gaziosmanpaşa",
+      "profile": "Yoğun apartman dokusu ve kalabalık aile yapısı nedeniyle ikinci el eşya alımının sık yapıldığı ilçelerdendir.",
+      "neighbors": "Gaziosmanpaşa; Bayrampaşa, Eyüpsultan, Sultangazi ve Esenler ile komşudur."
+    },
+    {
+      "slug": "gungoren-ikinci-el-esya-alim-satim",
+      "name": "Güngören",
+      "profile": "Merkezi ve kalabalık yapısıyla hızlı alım talebinin öne çıktığı ilçelerden biridir.",
+      "neighbors": "Güngören; Bahçelievler, Bağcılar, Esenler ve Bakırköy ile komşudur."
+    },
+    {
+      "slug": "kagithane-ikinci-el-esya-alim-satim",
+      "name": "Kağıthane",
+      "profile": "Yeni konut projeleriyle eski apartmanların bir arada bulunduğu ilçede her iki tip daireden eşya alıyoruz.",
+      "neighbors": "Kağıthane; Şişli, Beşiktaş, Beyoğlu, Eyüpsultan ve Sarıyer ile komşudur."
+    },
+    {
+      "slug": "sariyer-ikinci-el-esya-alim-satim",
+      "name": "Sarıyer",
+      "profile": "Kuzeyde geniş bir sahil ve yeşil alan hattına yayılan ilçede müstakil ev ve villa eşyalarında da alım yapıyoruz.",
+      "neighbors": "Sarıyer; Beşiktaş, Kağıthane, Eyüpsultan ve Şişli ile komşudur."
+    },
+    {
+      "slug": "silivri-ikinci-el-esya-alim-satim",
+      "name": "Silivri",
+      "profile": "Şehir merkezine uzak konumu nedeniyle planlı alım yaptığımız ilçede müstakil ev ve site dairelerine aynı gün gidiyoruz.",
+      "neighbors": "Silivri; Çatalca ve Büyükçekmece ile komşudur."
+    },
+    {
+      "slug": "sultangazi-ikinci-el-esya-alim-satim",
+      "name": "Sultangazi",
+      "profile": "Geniş aile yapısı ve yoğun apartman dokusu nedeniyle büyük hacimli alımların sık yapıldığı bir ilçedir.",
+      "neighbors": "Sultangazi; Gaziosmanpaşa, Esenler, Eyüpsultan ve Başakşehir ile komşudur."
+    },
+    {
+      "slug": "sisli-ikinci-el-esya-alim-satim",
+      "name": "Şişli",
+      "profile": "Merkezi iş ve konut bölgesi olan ilçede ofis mobilyası ve yüksek segment ev eşyası alımı yapıyoruz.",
+      "neighbors": "Şişli; Beşiktaş, Kağıthane, Beyoğlu ve Sarıyer ile komşudur."
+    },
+    {
+      "slug": "zeytinburnu-ikinci-el-esya-alim-satim",
+      "name": "Zeytinburnu",
+      "profile": "Sahil hattına yakın eski apartmanların yoğun olduğu ilçede yenileme dönemlerinde talep yüksektir.",
+      "neighbors": "Zeytinburnu; Bakırköy, Bayrampaşa ve Fatih ile komşudur."
+    },
+    {
+      "slug": "adalar-ikinci-el-esya-alim-satim",
+      "name": "Adalar",
+      "profile": "Adalarda nakliye planlaması gerektiği için alımları randevu ile yapıyoruz ve ekibimizi vapur saatlerine göre yönlendiriyoruz.",
+      "neighbors": "Adalar; Marmara Denizi'ndeki ada ilçesidir ve Kadıköy ile Kartal hatlarına yakındır."
+    },
+    {
+      "slug": "atasehir-ikinci-el-esya-alim-satim",
+      "name": "Ataşehir",
+      "profile": "Yeni ve modern konut projelerinin yoğun olduğu ilçede yüksek segment mobilya ve beyaz eşya alımı yapıyoruz.",
+      "neighbors": "Ataşehir; Kadıköy, Üsküdar, Ümraniye, Sancaktepe ve Maltepe ile komşudur."
+    },
+    {
+      "slug": "beykoz-ikinci-el-esya-alim-satim",
+      "name": "Beykoz",
+      "profile": "Boğaz'ın Anadolu yakasında yer alan ilçede müstakil ev, yalı ve site dairelerinden eşya alımı yapıyoruz.",
+      "neighbors": "Beykoz; Üsküdar, Ümraniye ve Çekmeköy ile komşudur."
+    },
+    {
+      "slug": "cekmekoy-ikinci-el-esya-alim-satim",
+      "name": "Çekmeköy",
+      "profile": "Yeni site projeleriyle hızla gelişen ilçede beyaz eşya ve komple ev eşyası alımı yoğundur.",
+      "neighbors": "Çekmeköy; Ümraniye, Sancaktepe, Beykoz ve Şile ile komşudur."
+    },
+    {
+      "slug": "kadikoy-ikinci-el-esya-alim-satim",
+      "name": "Kadıköy",
+      "profile": "Merkezi, hareketli ve çok çeşitli konut profiline sahip ilçede hem ev hem ofis eşyası alımı yapıyoruz.",
+      "neighbors": "Kadıköy; Üsküdar, Ataşehir ve Maltepe ile komşudur."
+    },
+    {
+      "slug": "kartal-ikinci-el-esya-alim-satim",
+      "name": "Kartal",
+      "profile": "Sahil hattındaki konutları ve kentsel dönüşüm projeleriyle bilinen ilçede alım talebi yüksektir.",
+      "neighbors": "Kartal; Maltepe, Pendik, Sancaktepe ve Sultanbeyli ile komşudur."
+    },
+    {
+      "slug": "maltepe-ikinci-el-esya-alim-satim",
+      "name": "Maltepe",
+      "profile": "Sahil ile yerleşim alanlarının iç içe olduğu ilçede apartman ve site dairelerinden eşya alıyoruz.",
+      "neighbors": "Maltepe; Kadıköy, Ataşehir, Kartal ve Sancaktepe ile komşudur."
+    },
+    {
+      "slug": "pendik-ikinci-el-esya-alim-satim",
+      "name": "Pendik",
+      "profile": "Geniş bir yerleşim alanına yayılan ilçede apartman, site ve müstakil yapılardan eşya alımı yapıyoruz.",
+      "neighbors": "Pendik; Kartal, Sancaktepe, Sultanbeyli ve Tuzla ile komşudur."
+    },
+    {
+      "slug": "sancaktepe-ikinci-el-esya-alim-satim",
+      "name": "Sancaktepe",
+      "profile": "Hızlı yapılaşan ve geniş ailelerin yaşadığı ilçede komple ev eşyası alımı sık yapılır.",
+      "neighbors": "Sancaktepe; Ümraniye, Çekmeköy, Kartal, Maltepe, Ataşehir ve Sultanbeyli ile komşudur."
+    },
+    {
+      "slug": "sultanbeyli-ikinci-el-esya-alim-satim",
+      "name": "Sultanbeyli",
+      "profile": "Yoğun apartman dokusu nedeniyle koltuk takımı, yatak odası ve beyaz eşya alımında hareketli bir ilçedir.",
+      "neighbors": "Sultanbeyli; Sancaktepe, Kartal, Pendik ve Çekmeköy ile komşudur."
+    },
+    {
+      "slug": "sile-ikinci-el-esya-alim-satim",
+      "name": "Şile",
+      "profile": "Şehrin kuzey sahilinde yer alan ilçede planlı randevu ile müstakil ev ve yazlık eşyası alımı yapıyoruz.",
+      "neighbors": "Şile; Çekmeköy ve Beykoz ile komşudur."
+    },
+    {
+      "slug": "tuzla-ikinci-el-esya-alim-satim",
+      "name": "Tuzla",
+      "profile": "Sahil ve tersane hattının yanı sıra geniş konut alanlarına sahip ilçede ev ve ofis eşyası alıyoruz.",
+      "neighbors": "Tuzla; Pendik ve Kartal ile komşudur."
+    },
+    {
+      "slug": "umraniye-ikinci-el-esya-alim-satim",
+      "name": "Ümraniye",
+      "profile": "Yoğun konut ve iş merkezi dokusuyla bilinen ilçede hem ev hem ofis mobilyası alımı yapıyoruz.",
+      "neighbors": "Ümraniye; Üsküdar, Ataşehir, Sancaktepe, Çekmeköy ve Beykoz ile komşudur."
+    },
+    {
+      "slug": "uskudar-ikinci-el-esya-alim-satim",
+      "name": "Üsküdar",
+      "profile": "Boğaz'ın Anadolu yakasındaki merkezi ilçede apartman daireleri ve iş yerlerinden eşya alımı yapıyoruz.",
+      "neighbors": "Üsküdar; karşı kıyıda Beşiktaş ve Beyoğlu ile, kendi yakasında Kadıköy, Ataşehir, Ümraniye ve Beykoz ile komşudur."
+    }
+  ]
+}

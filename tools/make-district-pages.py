@@ -1,0 +1,257 @@
+#!/usr/bin/env python3
+"""Generate the Medine Mobilya district landing pages, the sitemap, the redirects
+and the homepage area list — all from tools/districts.json.
+
+    python3 tools/make-district-pages.py            # write everything
+    python3 tools/make-district-pages.py --check    # verify only, change nothing
+
+Why a generator: 40 district pages that differ only in a find-and-replace of the
+district name are thin/duplicate content and Google treats them as such. Each page
+here gets its own intro (the district's housing and commercial profile) and its own
+"Why Medine Mobilya <district>?" paragraph built from the real neighbouring
+districts, so the visible text is genuinely unique per page.
+
+The pages already shipped by hand (status "existing") are never overwritten.
+"""
+import json
+import os
+import re
+import subprocess
+import sys
+from urllib.parse import quote
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(ROOT)
+
+WA = "905386467971"
+PHONE_DISPLAY = "+90 538 646 79 71"
+PHONE_TEL = "+905386467971"
+ADDRESS = "Mehterçeşme, Cumhuriyet Cd No:28, 34515 Esenyurt/İstanbul"
+ORIGIN = "https://spotcuistanbul.com"
+GTAG = "AW-609406158"
+
+ITEMS = [
+    "İkinci El Koltuk Takımı, L Koltuk ve Chester Koltuklar",
+    "İkinci El Yatak Odası Takımı, Gardırop ve Bazalar",
+    "İkinci El Buzdolabı, Çamaşır ve Bulaşık Makineleri",
+    "İkinci El Yemek Masası ve Sandalye Takımları",
+    "Ofis ve Büro Mobilyaları",
+]
+
+
+def data():
+    with open("tools/districts.json", encoding="utf-8") as fh:
+        raw = json.load(fh)
+    existing = [dict(d, status="existing") for d in raw["already_shipped_examples"]]
+    generated = [dict(d, status="generated") for d in raw["districts"]]
+    return existing, generated
+
+
+def page_html(d):
+    name, slug = d["name"], d["slug"]
+    title = f"{name} İkinci El Eşya Alım Satım — Medine Mobilya"
+    desc = (
+        f"{name} ikinci el eşya alanlar — Medine Mobilya. {d['profile']} "
+        "Aynı gün adresinizden nakit alım; WhatsApp ile 5 dakikada fiyat teklifi."
+    )
+    keywords = (
+        f"{name} ikinci el eşya alanlar, {name} spotçu, {name} mobilya alım satım, "
+        f"{name} beyaz eşya alan yerler, Medine Mobilya"
+    )
+    # The district name goes into a URL query: percent-encode it, otherwise names
+    # with Turkish characters (Bağcılar, Çekmeköy) land raw in the href.
+    wa_text = f"Merhaba,%20{quote(name)}%20b%C3%B6lgesinde%20ikinci%20el%20e%C5%9Fya%20satmak%20istiyorum"
+    items = "\n".join(f"        <li>{i}</li>" for i in ITEMS)
+
+    return f"""<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <!-- Google tag (gtag.js) for Google Ads Conversion Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GTAG}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{GTAG}');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{title}</title>
+  <meta name="description" content="{desc}">
+  <meta name="keywords" content="{keywords}">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="{ORIGIN}/{slug}">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="/" style="text-decoration: none; color: inherit;">MEDİNE MOBİLYA</a>
+      <span class="logo-sub">Medine Mobilya — {name} İkinci El Eşya Alım Satım</span>
+    </div>
+
+    <nav class="nav-links" aria-label="Ana Menü">
+      <a href="/">Ana Sayfa</a>
+      <a href="/#about">Hakkımızda</a>
+      <a href="/#features">Hizmetlerimiz</a>
+      <a href="https://wa.me/{WA}?text={wa_text}" class="nav-cta" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Teklif</a>
+    </nav>
+  </header>
+
+  <main style="padding-top: 100px; max-width: 900px; margin: auto; padding-left: 20px; padding-right: 20px;">
+    <section class="about" style="margin-top: 20px;">
+      <h1>{name} İkinci El Eşya Alanlar — Medine Mobilya</h1>
+      <p style="font-size: 18px; line-height: 1.8; color: #444; margin-top: 15px;">
+        <strong>Medine Mobilya</strong> olarak <strong>{name}</strong> bölgesinde ikinci el mobilya, beyaz eşya, koltuk takımı, yatak odası takımı ve televizyon gibi tüm ev eşyalarınızı adresinizden nakit ödeme ile satın alıyoruz. {d['profile']}
+      </p>
+
+      <div style="background: #f1e7dc; padding: 25px; border-radius: 12px; margin-top: 25px; text-align: center;">
+        <h3 style="color: #5a3921; font-size: 22px;">{name} Bölgesinde 5 Dakikada Fiyat Teklifi Alın</h3>
+        <p style="margin-top: 10px; font-size: 16px;">Eşyalarınızın fotoğrafını WhatsApp ile gönderin, anında fiyat teklifi sunalım.</p>
+        <a href="https://wa.me/{WA}?text={wa_text}" target="_blank" class="hero-btn" style="margin-top: 15px; display: inline-block;">
+          <i class="fab fa-whatsapp"></i> WhatsApp ile Fiyat Al
+        </a>
+      </div>
+
+      <h2 style="margin-top: 40px; text-align: left;">{name} Bölgesinde Satın Aldığımız Eşyalar</h2>
+      <ul style="line-height: 2; font-size: 16px; margin-left: 20px; color: #333; margin-top: 15px;">
+{items}
+      </ul>
+
+      <h2 style="margin-top: 40px; text-align: left;">Neden Medine Mobilya {name}?</h2>
+      <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 10px;">
+        Kendi nakliye araçlarımızla aynı gün adresinize geliyoruz. {d['neighbors']} Ödemeyi eşyalarınız aracımıza yüklenmeden önce nakit veya banka havalesi ile kapıda yapıyoruz.
+      </p>
+
+      <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+        <p style="font-weight: bold; color: #5a3921;">
+          <i class="fas fa-map-marker-alt"></i> Merkez Mağaza Adresimiz: {ADDRESS}
+        </p>
+        <p style="margin-top: 8px;">
+          <a href="/" style="color: #7b4f2c; font-weight: bold; text-decoration: underline;">← Ana Sayfaya Dön</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>MEDİNE MOBİLYA</strong> — {name} İkinci El Eşya Alım Satım</p>
+    <p>© 2026 Medine Mobilya | Tel: {PHONE_DISPLAY} | WhatsApp: 05386467971</p>
+  </footer>
+
+</body>
+</html>
+"""
+
+
+def sitemap(all_d):
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        "  <url>",
+        f"    <loc>{ORIGIN}/</loc>",
+        "    <lastmod>2026-09-20</lastmod>",
+        "    <changefreq>weekly</changefreq>",
+        "    <priority>1.0</priority>",
+        "  </url>",
+    ]
+    for d in all_d:
+        lines += [
+            "  <url>",
+            f"    <loc>{ORIGIN}/{d['slug']}</loc>",
+            "    <lastmod>2026-09-20</lastmod>",
+            "    <changefreq>monthly</changefreq>",
+            "    <priority>0.8</priority>",
+            "  </url>",
+        ]
+    lines += ["</urlset>", ""]
+    return "\n".join(lines)
+
+
+def redirects(all_d):
+    out = [
+        "# Netlify redirects — Medine Mobilya (spotcuistanbul.com)",
+        "#",
+        "# 1) The .html copy of every district page 301s to the clean URL that the",
+        "#    canonical tag and sitemap.xml both declare (/x), so Google consolidates",
+        "#    the duplicate instead of choosing one, and old links keep working.",
+        "# 2) /index.html 301s to / so the homepage has a single address.",
+        "# 3) The catch-all rewrite to /index.html (200) that used to be here was",
+        "#    removed: it answered EVERY unknown URL with the homepage and HTTP 200,",
+        "#    which is a soft 404 — Google can index it and it hides real 404s.",
+        "#    Unmatched paths now fall through to /404.html with a real 404 status.",
+        "#",
+        '#    The trailing "!" is required: Netlify serves an existing static file in',
+        "#    preference to a redirect rule (shadowing), so without it the .html copies",
+        "#    keep returning 200 and the rule is ignored.",
+        "",
+    ]
+    for d in all_d:
+        out.append(f"/{d['slug']}.html    /{d['slug']}    301!")
+    out += ["/index.html    /    301!", ""]
+    return "\n".join(out)
+
+
+def home_areas(all_d):
+    rows = "\n".join(
+        f'        <div class="area-item"><a href="/{d["slug"]}">{d["name"]} İkinci El Eşya Alım Satım</a></div>'
+        for d in all_d
+    )
+    return f'      <div class="area-list">\n{rows}\n      </div>'
+
+
+def main():
+    check = "--check" in sys.argv
+    existing, generated = data()
+    all_d = sorted(existing + generated, key=lambda d: d["name"])
+
+    if check:
+        problems = []
+        for d in generated:
+            for p in (f"{d['slug']}.html", os.path.join(d["slug"], "index.html")):
+                if not os.path.exists(p):
+                    problems.append(f"missing page: {p}")
+                else:
+                    body = open(p, encoding="utf-8").read()
+                    if f"{ORIGIN}/{d['slug']}" not in body:
+                        problems.append(f"wrong canonical in {p}")
+        if open("sitemap.xml", encoding="utf-8").read().count("<loc>") != len(all_d) + 1:
+            problems.append("sitemap URL count does not match the district list")
+        if open("_redirects", encoding="utf-8").read().count("301!") != len(all_d) + 1:
+            problems.append("redirect rule count does not match the district list")
+        home = open("index.html", encoding="utf-8").read()
+        if home.count('class="area-item"') != len(all_d):
+            problems.append("homepage area list out of sync")
+        print("\n".join(problems) if problems else f"check ok: {len(all_d)} districts, all files in sync")
+        return 1 if problems else 0
+
+    written = 0
+    for d in generated:
+        html = page_html(d)
+        for p in (f"{d['slug']}.html", os.path.join(d["slug"], "index.html")):
+            os.makedirs(os.path.dirname(p) or ".", exist_ok=True)
+            open(p, "w", encoding="utf-8").write(html)
+            written += 1
+        print(f"  + {d['name']:16} -> {d['slug']}.html + /{d['slug']}/index.html")
+
+    open("sitemap.xml", "w", encoding="utf-8").write(sitemap(all_d))
+    open("_redirects", "w", encoding="utf-8").write(redirects(all_d))
+
+    home = open("index.html", encoding="utf-8").read()
+    new_home, n = re.subn(r'      <div class="area-list">.*?\n      </div>', home_areas(all_d), home, flags=re.S)
+    if n != 1:
+        raise SystemExit(f"could not update the homepage area list (matched {n} times)")
+    open("index.html", "w", encoding="utf-8").write(new_home)
+
+    subprocess.run([sys.executable, "tools/make-404.py"], check=True)
+    print(f"\n{written} page(s) written, sitemap {len(all_d) + 1} URLs, {len(all_d) + 1} redirect rules, homepage list updated")
+
+
+if __name__ == "__main__":
+    sys.exit(main() or 0)

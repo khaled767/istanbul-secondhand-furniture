@@ -3,22 +3,54 @@
 # 1) The .html copy of every district page 301s to the clean URL that the
 #    canonical tag and sitemap.xml both declare (/x), so Google consolidates
 #    the duplicate instead of choosing one, and old links keep working.
-#
-#    The trailing "!" is required: Netlify serves an existing static file in
-#    preference to a redirect rule (shadowing), so without it the .html copies
-#    keep returning 200 and the rule is ignored.
 # 2) /index.html 301s to / so the homepage has a single address.
 # 3) The catch-all rewrite to /index.html (200) that used to be here was
 #    removed: it answered EVERY unknown URL with the homepage and HTTP 200,
 #    which is a soft 404 — Google can index it and it hides real 404s.
 #    Unmatched paths now fall through to /404.html with a real 404 status.
+#
+#    The trailing "!" is required: Netlify serves an existing static file in
+#    preference to a redirect rule (shadowing), so without it the .html copies
+#    keep returning 200 and the rule is ignored.
 
+/adalar-ikinci-el-esya-alim-satim.html    /adalar-ikinci-el-esya-alim-satim    301!
+/arnavutkoy-ikinci-el-esya-alim-satim.html    /arnavutkoy-ikinci-el-esya-alim-satim    301!
+/atasehir-ikinci-el-esya-alim-satim.html    /atasehir-ikinci-el-esya-alim-satim    301!
 /avcilar-ikinci-el-esya-alim-satim.html    /avcilar-ikinci-el-esya-alim-satim    301!
+/bahcelievler-ikinci-el-esya-alim-satim.html    /bahcelievler-ikinci-el-esya-alim-satim    301!
+/bakirkoy-ikinci-el-esya-alim-satim.html    /bakirkoy-ikinci-el-esya-alim-satim    301!
+/bayrampasa-ikinci-el-esya-alim-satim.html    /bayrampasa-ikinci-el-esya-alim-satim    301!
+/bagcilar-ikinci-el-esya-alim-satim.html    /bagcilar-ikinci-el-esya-alim-satim    301!
 /basaksehir-ikinci-el-esya-alim-satim.html    /basaksehir-ikinci-el-esya-alim-satim    301!
+/beykoz-ikinci-el-esya-alim-satim.html    /beykoz-ikinci-el-esya-alim-satim    301!
 /beylikduzu-ikinci-el-esya-alim-satim.html    /beylikduzu-ikinci-el-esya-alim-satim    301!
+/beyoglu-ikinci-el-esya-alim-satim.html    /beyoglu-ikinci-el-esya-alim-satim    301!
+/besiktas-ikinci-el-esya-alim-satim.html    /besiktas-ikinci-el-esya-alim-satim    301!
 /buyukcekmece-ikinci-el-esya-alim-satim.html    /buyukcekmece-ikinci-el-esya-alim-satim    301!
-/catalca-ikinci-el-esya-alim-satim.html    /catalca-ikinci-el-esya-alim-satim    301!
+/esenler-ikinci-el-esya-alim-satim.html    /esenler-ikinci-el-esya-alim-satim    301!
 /esenyurt-ikinci-el-esya-alim-satim.html    /esenyurt-ikinci-el-esya-alim-satim    301!
+/eyupsultan-ikinci-el-esya-alim-satim.html    /eyupsultan-ikinci-el-esya-alim-satim    301!
+/fatih-ikinci-el-esya-alim-satim.html    /fatih-ikinci-el-esya-alim-satim    301!
 /florya-ikinci-el-esya-alim-satim.html    /florya-ikinci-el-esya-alim-satim    301!
+/gaziosmanpasa-ikinci-el-esya-alim-satim.html    /gaziosmanpasa-ikinci-el-esya-alim-satim    301!
+/gungoren-ikinci-el-esya-alim-satim.html    /gungoren-ikinci-el-esya-alim-satim    301!
+/kadikoy-ikinci-el-esya-alim-satim.html    /kadikoy-ikinci-el-esya-alim-satim    301!
+/kartal-ikinci-el-esya-alim-satim.html    /kartal-ikinci-el-esya-alim-satim    301!
+/kagithane-ikinci-el-esya-alim-satim.html    /kagithane-ikinci-el-esya-alim-satim    301!
 /kucukcekmece-ikinci-el-esya-alim-satim.html    /kucukcekmece-ikinci-el-esya-alim-satim    301!
+/maltepe-ikinci-el-esya-alim-satim.html    /maltepe-ikinci-el-esya-alim-satim    301!
+/pendik-ikinci-el-esya-alim-satim.html    /pendik-ikinci-el-esya-alim-satim    301!
+/sancaktepe-ikinci-el-esya-alim-satim.html    /sancaktepe-ikinci-el-esya-alim-satim    301!
+/sariyer-ikinci-el-esya-alim-satim.html    /sariyer-ikinci-el-esya-alim-satim    301!
+/silivri-ikinci-el-esya-alim-satim.html    /silivri-ikinci-el-esya-alim-satim    301!
+/sultanbeyli-ikinci-el-esya-alim-satim.html    /sultanbeyli-ikinci-el-esya-alim-satim    301!
+/sultangazi-ikinci-el-esya-alim-satim.html    /sultangazi-ikinci-el-esya-alim-satim    301!
+/tuzla-ikinci-el-esya-alim-satim.html    /tuzla-ikinci-el-esya-alim-satim    301!
+/zeytinburnu-ikinci-el-esya-alim-satim.html    /zeytinburnu-ikinci-el-esya-alim-satim    301!
+/catalca-ikinci-el-esya-alim-satim.html    /catalca-ikinci-el-esya-alim-satim    301!
+/cekmekoy-ikinci-el-esya-alim-satim.html    /cekmekoy-ikinci-el-esya-alim-satim    301!
+/umraniye-ikinci-el-esya-alim-satim.html    /umraniye-ikinci-el-esya-alim-satim    301!
+/uskudar-ikinci-el-esya-alim-satim.html    /uskudar-ikinci-el-esya-alim-satim    301!
+/sile-ikinci-el-esya-alim-satim.html    /sile-ikinci-el-esya-alim-satim    301!
+/sisli-ikinci-el-esya-alim-satim.html    /sisli-ikinci-el-esya-alim-satim    301!
 /index.html    /    301!

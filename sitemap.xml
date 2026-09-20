@@ -2,56 +2,248 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://spotcuistanbul.com/</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://spotcuistanbul.com/adalar-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/arnavutkoy-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/atasehir-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://spotcuistanbul.com/avcilar-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/bahcelievler-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/bakirkoy-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/bayrampasa-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/bagcilar-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://spotcuistanbul.com/basaksehir-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://spotcuistanbul.com/buyukcekmece-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://spotcuistanbul.com/beykoz-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://spotcuistanbul.com/beylikduzu-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/beyoglu-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/besiktas-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/buyukcekmece-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/esenler-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://spotcuistanbul.com/esenyurt-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/eyupsultan-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/fatih-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/florya-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/gaziosmanpasa-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/gungoren-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/kadikoy-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/kartal-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/kagithane-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/kucukcekmece-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/maltepe-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/pendik-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/sancaktepe-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/sariyer-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/silivri-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/sultanbeyli-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/sultangazi-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/tuzla-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/zeytinburnu-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://spotcuistanbul.com/catalca-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://spotcuistanbul.com/florya-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://spotcuistanbul.com/cekmekoy-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://spotcuistanbul.com/kucukcekmece-ikinci-el-esya-alim-satim</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://spotcuistanbul.com/umraniye-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/uskudar-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/sile-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spotcuistanbul.com/sisli-ikinci-el-esya-alim-satim</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

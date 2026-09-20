@@ -2,19 +2,18 @@
 """Generate 404.html for the Medine Mobilya site (served by Netlify for every
 unmatched path, with a real 404 status).
 
+The district list comes from tools/districts.json, so adding a district page and
+regenerating (tools/make-district-pages.py does both) keeps this page in sync.
+
 Run from the project root:  python3 tools/make-404.py
 """
+import json
 import os
 
+with open("tools/districts.json", encoding="utf-8") as fh:
+    _raw = json.load(fh)
 DISTRICTS = [
-    ("avcilar-ikinci-el-esya-alim-satim", "Avcılar"),
-    ("basaksehir-ikinci-el-esya-alim-satim", "Başakşehir"),
-    ("beylikduzu-ikinci-el-esya-alim-satim", "Beylikdüzü"),
-    ("buyukcekmece-ikinci-el-esya-alim-satim", "Büyükçekmece"),
-    ("catalca-ikinci-el-esya-alim-satim", "Çatalca"),
-    ("esenyurt-ikinci-el-esya-alim-satim", "Esenyurt"),
-    ("florya-ikinci-el-esya-alim-satim", "Florya"),
-    ("kucukcekmece-ikinci-el-esya-alim-satim", "Küçükçekmece"),
+    (d["slug"], d["name"]) for d in sorted(_raw["already_shipped_examples"] + _raw["districts"], key=lambda d: d["name"])
 ]
 
 WA = "905386467971"
