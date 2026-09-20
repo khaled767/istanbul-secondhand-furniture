@@ -150,13 +150,32 @@ def page_html(d):
 """
 
 
+def last_commit_date():
+    """The date a crawler should compare: the last commit that touched the site.
+
+    A hardcoded or build-time date would claim a change on every run and Google
+    ignores a lastmod that does not match the real content.
+    """
+    try:
+        out = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", "."],
+            capture_output=True, text=True, check=True, cwd=ROOT,
+        ).stdout.strip()
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", out):
+            return out
+    except Exception:
+        pass
+    return __import__("datetime").date.today().isoformat()
+
+
 def sitemap(all_d):
+    stamp = last_commit_date()
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
         "  <url>",
         f"    <loc>{ORIGIN}/</loc>",
-        "    <lastmod>2026-09-20</lastmod>",
+        f"    <lastmod>{stamp}</lastmod>",
         "    <changefreq>weekly</changefreq>",
         "    <priority>1.0</priority>",
         "  </url>",
@@ -165,7 +184,7 @@ def sitemap(all_d):
         lines += [
             "  <url>",
             f"    <loc>{ORIGIN}/{d['slug']}</loc>",
-            "    <lastmod>2026-09-20</lastmod>",
+            f"    <lastmod>{stamp}</lastmod>",
             "    <changefreq>monthly</changefreq>",
             "    <priority>0.8</priority>",
             "  </url>",
