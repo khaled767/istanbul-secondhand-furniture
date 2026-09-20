@@ -98,7 +98,7 @@ def page_html(d, all_d):
     )
     # The district name goes into a URL query: percent-encode it, otherwise names
     # with Turkish characters (Bağcılar, Çekmeköy) land raw in the href.
-    wa_text = f"Merhaba,%20{quote(name)}%20b%C3%B6lgesinde%20ikinci%20el%20e%C5%9Fya%20satmak%20istiyorum"
+    wa_text = quote(wa_message(QUALIFICATION, name), safe="")
     items = "\n".join(f"        <li>{i}</li>" for i in ITEMS)
 
     return f"""<!DOCTYPE html>
@@ -170,6 +170,7 @@ def page_html(d, all_d):
         Kendi nakliye araçlarımızla aynı gün adresinize geliyoruz. {d['neighbors']} Ödemeyi eşyalarınız aracımıza yüklenmeden önce nakit veya banka havalesi ile kapıda yapıyoruz.
       </p>
 
+{qual_block(QUALIFICATION, name)}
 {nearby_block(d, all_d)}
       <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
         <p style="font-weight: bold; color: #5a3921;">
@@ -363,6 +364,137 @@ def add_call_links():
     return touched
 
 
+def qualification():
+    """Owner-stated acceptance rules (tools/qualification.json) — one source for the
+    site copy and the WhatsApp intake message. Single pieces are refused even when
+    offered free, because the truck and crew cost more than the piece is worth."""
+    with open("tools/qualification.json", encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def _qual_lists(q):
+    acc = "\n".join(f"            <li>{x}</li>" for x in q["accept"])
+    rej = "\n".join(f"            <li>{x}</li>" for x in q["reject"])
+    return f"""        <div style="flex: 1 1 300px; background: #f7f3ef; border-left: 4px solid #7b4f2c; padding: 18px; border-radius: 8px;">
+          <h3 style="color: #5a3921; font-size: 18px;">{q['accept_title']}</h3>
+          <ul style="line-height: 1.9; font-size: 15px; margin-top: 10px; margin-left: 18px;">
+{acc}
+          </ul>
+        </div>
+        <div style="flex: 1 1 300px; background: #fbf2f1; border-left: 4px solid #b3261e; padding: 18px; border-radius: 8px;">
+          <h3 style="color: #5a3921; font-size: 18px;">{q['reject_title']}</h3>
+          <ul style="line-height: 1.9; font-size: 15px; margin-top: 10px; margin-left: 18px;">
+{rej}
+          </ul>
+        </div>"""
+
+
+def qual_block(q, name=None, indent="      "):
+    """The district-page version: what we buy / don't buy, plus the reason, placed
+    right before the nearby-district links."""
+    where = f"{name} bölgesinde" if name else "İstanbul genelinde"
+    return f"""{indent}<h2 style="margin-top: 40px; text-align: left;">{where} neleri alıyoruz, neleri almıyoruz?</h2>
+{indent}<p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 10px;">
+{indent}  {q['why']}
+{indent}</p>
+{indent}<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+{_qual_lists(q)}
+{indent}</div>
+
+"""
+
+
+def home_qual_section(q):
+    return f"""  <!-- QUALIFICATION: generated from tools/qualification.json, do not edit by hand -->
+  <section class="faq reveal" id="qualification">
+    <h2>Neleri alıyoruz, neleri almıyoruz?</h2>
+    <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 10px;">{q['why']}</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+{_qual_lists(q)}
+    </div>
+  </section>
+
+"""
+
+
+def wa_message(q, name=None):
+    """The first message the shop receives already carries the decisive facts, so the
+    conversations that can never end in a purchase do not start at all."""
+    if name:
+        head = f"Merhaba, {name} bölgesinde ikinci el eşya satmak istiyorum."
+    else:
+        head = "Merhaba, ikinci el eşya satmak istiyorum."
+    body = "\n".join(f"{i + 1}) {x}" for i, x in enumerate(q["intake"]))
+    return head + "\n" + body
+
+
+def inject_home_qualification(q):
+    """Homepage: the full block plus a FAQ entry. Both idempotent."""
+    body = open("index.html", encoding="utf-8").read()
+    changed = 0
+    if 'id="qualification"' not in body:
+        anchor = "  <!-- FAQ SECTION -->"
+        if anchor not in body:
+            raise SystemExit("homepage FAQ anchor not found")
+        body = body.replace(anchor, home_qual_section(q) + anchor, 1)
+        changed += 1
+    faq_anchor = "<p>Ödeme eşyalarınız aracımıza yüklenmeden önce adresinizde nakit veya anında EFT/Havale ile yapılır.</p>"
+    if q["faq_q"] not in body:
+        if faq_anchor not in body:
+            raise SystemExit("homepage FAQ answer anchor not found")
+        extra = "\n      <h3>" + q["faq_q"] + "</h3>\n      <p>" + q["faq_a"] + "</p>"
+        body = body.replace(faq_anchor, faq_anchor + extra, 1)
+        changed += 1
+    if changed:
+        open("index.html", "w", encoding="utf-8").write(body)
+    return changed
+
+
+def update_wa_intake(q, all_d=None):
+    """Every WhatsApp link must carry the intake questions. Generated pages get them
+    from the template; index.html, 404.html and the 8 hand-written pages are patched
+    here (the hand-written ones with their own district name in the first line)."""
+    targets = [("index.html", None), ("404.html", None)]
+    for d in all_d or []:
+        if d.get("status") == "existing":
+            targets.append((f"{d['slug']}.html", d["name"]))
+            targets.append((os.path.join(d["slug"], "index.html"), d["name"]))
+    done = []
+    for path, name in targets:
+        if not os.path.exists(path):
+            continue
+        enc = quote(wa_message(q, name), safe="")
+        body = open(path, encoding="utf-8").read()
+        new_body = re.sub(r'href="https://wa\.me/905386467971\?text=[^"]*"',
+                          f'href="https://wa.me/905386467971?text={enc}"', body)
+        if new_body != body:
+            open(path, "w", encoding="utf-8").write(new_body)
+            done.append(path)
+    return done
+
+
+def inject_qualification_into_existing(q, all_d):
+    """The 8 hand-written pages get the what-we-buy block before their nearby links,
+    idempotently, so all 40 districts read the same."""
+    anchor = '<h2 style="margin-top: 40px; text-align: left;">Yakın Bölgeler</h2>'
+    touched = 0
+    for d in all_d:
+        if d.get("status") != "existing":
+            continue
+        for path in (f"{d['slug']}.html", os.path.join(d["slug"], "index.html")):
+            if not os.path.exists(path):
+                continue
+            body = open(path, encoding="utf-8").read()
+            if "neleri alıyoruz" in body or anchor not in body:
+                continue
+            open(path, "w", encoding="utf-8").write(body.replace(anchor, qual_block(q, d["name"]) + anchor, 1))
+            touched += 1
+    return touched
+
+
+QUALIFICATION = qualification()
+
+
 def main():
     check = "--check" in sys.argv
     existing, generated, legacy = data()
@@ -390,6 +522,15 @@ def main():
             body = open(f"{d['slug']}.html", encoding="utf-8").read()
             if "Yakın Bölgeler" not in body:
                 problems.append(f"missing nearby block: {d['slug']}")
+            if "neleri alıyoruz" not in body:
+                problems.append(f"missing qualification block: {d['slug']}")
+            if "Komple%20ev%20mi" not in body:
+                problems.append(f"whatsapp intake missing: {d['slug']}")
+        home_body = open("index.html", encoding="utf-8").read()
+        if 'id="qualification"' not in home_body:
+            problems.append("homepage qualification section missing")
+        if QUALIFICATION["faq_q"] not in home_body:
+            problems.append("homepage qualification FAQ missing")
         print("\n".join(problems) if problems else f"check ok: {len(all_d)} districts, all files in sync")
         return 1 if problems else 0
 
@@ -413,6 +554,10 @@ def main():
 
     subprocess.run([sys.executable, "tools/make-404.py"], check=True)
     print(f"nearby block added to {inject_nearby_into_existing(all_d)} hand-written page copy(ies)")
+    print(f"qualification block added to {inject_qualification_into_existing(QUALIFICATION, all_d)} hand-written copy(ies)")
+    print(f"homepage qualification section/FAQ updated: {inject_home_qualification(QUALIFICATION)}")
+    done = ", ".join(update_wa_intake(QUALIFICATION, all_d))
+    print(f"whatsapp intake message updated on: {done or 'nothing'}")
     print(f"call links added to {len(add_call_links())} page(s)")
     touched = inject_tracking()
     if touched:

@@ -1,0 +1,27 @@
+{
+  "_comment": "Neyi alıp neyi almadığımız — tek kaynak. Hem site sayfalarına hem WhatsApp ön mesajına buradan yazılır; işletme kararı değişince sadece bu dosya güncellenir. Kural işletme sahibinin ifadesidir: tek parça eşya (tek kişilik baza, tek koltuk, tek TV ünitesi) ücretsiz verilse bile alınmaz, çünkü şehir içi nakliye ve işçilik maliyeti parçanın değerinden yüksektir. Komple veya kompleye yakın ev eşyası alınır.",
+  "accept_title": "Neleri alıyoruz?",
+  "accept": [
+    "Komple veya kompleye yakın ev eşyası — taşınma, boşaltma, miras, tadilat gibi durumlarda evin tüm eşyaları",
+    "Birlikte satılan gruplar: koltuk takımı + yatak odası + yemek odası + beyaz eşya",
+    "Kullanılabilir, çalışır ve iyi durumda olan eşyalar",
+    "Aynı adreste toplanmış, tek seferde alınabilecek eşyalar"
+  ],
+  "reject_title": "Neleri almıyoruz?",
+  "reject": [
+    "Tek parça eşyalar: tek kişilik baza/yatak, tek koltuk veya sandalye, tek TV ünitesi, tek dolap",
+    "Çok eski, yıpranmış, kırık, yanmış veya rutubet görmüş eşyalar",
+    "Çalışmayan beyaz eşya (arızalı buzdolabı, çamaşır makinesi, bulaşık makinesi vb.)",
+    "Nakliye ve işçilik maliyeti kendi değerinden yüksek olan parçalar — ücretsiz verilse bile"
+  ],
+  "why": "Şehir içinde büyük araç ve iki-üç kişilik ekiple çalışıyoruz. Tek bir parça için araç ve ekip çıkarmak, o parçanın bedelini aştığı için bu tür talepleri karşılayamıyoruz. Eşyalarınız komple olduğunda hem sizin için hem bizim için iş mantıklı oluyor: tek seferde geliyor, tek seferde ödüyoruz.",
+  "faq_q": "Tek parça eşya (tek koltuk, tek yatak, tek dolap) alıyor musunuz?",
+  "faq_a": "Hayır. Tek parça eşya almıyoruz; komple veya kompleye yakın ev eşyası alıyoruz. Sebebi basit: büyük araç ve ekiple geliyoruz ve tek bir parça için yapılan nakliye, işçilik ve yakıt masrafı o parçanın değerinin üzerine çıkıyor. Komple ev eşyası, koltuk takımı + yatak odası + beyaz eşya gibi birlikte alınan gruplar bizim için uygundur.",
+  "intake": [
+    "Eşya türleri (koltuk takımı, yatak odası, beyaz eşya vb.):",
+    "Komple ev mi, kaç parça:",
+    "Durum (çalışır / iyi durumda):",
+    "İlçe ve adres:",
+    "Fotoğrafları gönderiyorum."
+  ]
+}
