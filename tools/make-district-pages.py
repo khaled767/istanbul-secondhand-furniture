@@ -47,7 +47,43 @@ def data():
     return existing, generated
 
 
-def page_html(d):
+def nearby_of(d, all_d):
+    """The districts this one borders, resolved from its own adjacency sentence.
+
+    Derived rather than stored: the sentence is the fact, the slug list is just a
+    view of it, so the two can never disagree.
+    """
+    names = sorted((x["name"] for x in all_d), key=len, reverse=True)
+    to_slug = {x["name"]: x["slug"] for x in all_d}
+    found, rest = [], d.get("neighbors", "")
+    for n in names:
+        if n == d["name"]:
+            continue
+        if re.search(r"(?<![\wçğıöşüÇĞİÖŞÜ])" + re.escape(n) + r"(?![\wçğıöşüÇĞİÖŞÜ])", rest):
+            found.append(to_slug[n])
+            rest = rest.replace(n, "·")
+    return found
+
+
+def nearby_block(d, all_d):
+    slugs = nearby_of(d, all_d)
+    if not slugs:
+        return ""
+    by_slug = {x["slug"]: x["name"] for x in all_d}
+    links = "\n".join(
+        f'        <li><a href="/{s}" style="color: #7b4f2c; font-weight: bold;">'
+        f'{by_slug[s]} İkinci El Eşya Alım Satım</a></li>'
+        for s in slugs
+    )
+    return f"""      <h2 style="margin-top: 40px; text-align: left;">Yakın Bölgeler</h2>
+      <ul style="line-height: 2; font-size: 16px; margin-left: 20px; margin-top: 15px; list-style: none;">
+{links}
+      </ul>
+
+"""
+
+
+def page_html(d, all_d):
     name, slug = d["name"], d["slug"]
     title = f"{name} İkinci El Eşya Alım Satım — Medine Mobilya"
     desc = (
@@ -129,6 +165,7 @@ def page_html(d):
         Kendi nakliye araçlarımızla aynı gün adresinize geliyoruz. {d['neighbors']} Ödemeyi eşyalarınız aracımıza yüklenmeden önce nakit veya banka havalesi ile kapıda yapıyoruz.
       </p>
 
+{nearby_block(d, all_d)}
       <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
         <p style="font-weight: bold; color: #5a3921;">
           <i class="fas fa-map-marker-alt"></i> Merkez Mağaza Adresimiz: {ADDRESS}
@@ -225,6 +262,27 @@ def home_areas(all_d):
     return f'      <div class="area-list">\n{rows}\n      </div>'
 
 
+def inject_nearby_into_existing(all_d):
+    """The 8 hand-written pages predate the generator, so the nearby-districts block
+    is inserted into them here (idempotently) to keep internal linking uniform."""
+    by_slug = {d["slug"]: d for d in all_d}
+    anchor = '      <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">'
+    touched = 0
+    for d in all_d:
+        if d.get("status") != "existing":
+            continue
+        for path in (f"{d['slug']}.html", os.path.join(d["slug"], "index.html")):
+            if not os.path.exists(path):
+                continue
+            body = open(path, encoding="utf-8").read()
+            if "Yakın Bölgeler" in body or anchor not in body:
+                continue
+            block = nearby_block(by_slug[d["slug"]], all_d)
+            open(path, "w", encoding="utf-8").write(body.replace(anchor, block + anchor, 1))
+            touched += 1
+    return touched
+
+
 def main():
     check = "--check" in sys.argv
     existing, generated = data()
@@ -247,12 +305,16 @@ def main():
         home = open("index.html", encoding="utf-8").read()
         if home.count('class="area-item"') != len(all_d):
             problems.append("homepage area list out of sync")
+        for d in all_d:
+            body = open(f"{d['slug']}.html", encoding="utf-8").read()
+            if "Yakın Bölgeler" not in body:
+                problems.append(f"missing nearby block: {d['slug']}")
         print("\n".join(problems) if problems else f"check ok: {len(all_d)} districts, all files in sync")
         return 1 if problems else 0
 
     written = 0
     for d in generated:
-        html = page_html(d)
+        html = page_html(d, all_d)
         for p in (f"{d['slug']}.html", os.path.join(d["slug"], "index.html")):
             os.makedirs(os.path.dirname(p) or ".", exist_ok=True)
             open(p, "w", encoding="utf-8").write(html)
@@ -269,6 +331,7 @@ def main():
     open("index.html", "w", encoding="utf-8").write(new_home)
 
     subprocess.run([sys.executable, "tools/make-404.py"], check=True)
+    print(f"nearby block added to {inject_nearby_into_existing(all_d)} hand-written page copy(ies)")
     print(f"\n{written} page(s) written, sitemap {len(all_d) + 1} URLs, {len(all_d) + 1} redirect rules, homepage list updated")
 
 

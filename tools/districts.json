@@ -1,14 +1,54 @@
 {
   "_comment": "Single source of truth for the Medine Mobilya service areas. tools/make-district-pages.py generates one page per entry marked generated:true, rebuilds sitemap.xml and _redirects from this list, and updates the homepage area list; tools/make-404.py links every entry. 'existing' entries already shipped as hand-written pages and are never overwritten.",
   "already_shipped_examples": [
-    { "slug": "avcilar-ikinci-el-esya-alim-satim", "name": "Avcılar", "status": "existing" },
-    { "slug": "basaksehir-ikinci-el-esya-alim-satim", "name": "Başakşehir", "status": "existing" },
-    { "slug": "beylikduzu-ikinci-el-esya-alim-satim", "name": "Beylikdüzü", "status": "existing" },
-    { "slug": "buyukcekmece-ikinci-el-esya-alim-satim", "name": "Büyükçekmece", "status": "existing" },
-    { "slug": "catalca-ikinci-el-esya-alim-satim", "name": "Çatalca", "status": "existing" },
-    { "slug": "esenyurt-ikinci-el-esya-alim-satim", "name": "Esenyurt", "status": "existing" },
-    { "slug": "florya-ikinci-el-esya-alim-satim", "name": "Florya", "status": "existing" },
-    { "slug": "kucukcekmece-ikinci-el-esya-alim-satim", "name": "Küçükçekmece", "status": "existing" }
+    {
+      "slug": "avcilar-ikinci-el-esya-alim-satim",
+      "name": "Avcılar",
+      "status": "existing",
+      "neighbors": "Avcılar; Küçükçekmece, Başakşehir ve Beylikdüzü ile komşudur."
+    },
+    {
+      "slug": "basaksehir-ikinci-el-esya-alim-satim",
+      "name": "Başakşehir",
+      "status": "existing",
+      "neighbors": "Başakşehir; Bağcılar, Küçükçekmece, Esenyurt, Arnavutköy ve Sultangazi ile komşudur."
+    },
+    {
+      "slug": "beylikduzu-ikinci-el-esya-alim-satim",
+      "name": "Beylikdüzü",
+      "status": "existing",
+      "neighbors": "Beylikdüzü; Avcılar, Esenyurt ve Büyükçekmece ile komşudur."
+    },
+    {
+      "slug": "buyukcekmece-ikinci-el-esya-alim-satim",
+      "name": "Büyükçekmece",
+      "status": "existing",
+      "neighbors": "Büyükçekmece; Beylikdüzü, Esenyurt ve Silivri ile komşudur."
+    },
+    {
+      "slug": "catalca-ikinci-el-esya-alim-satim",
+      "name": "Çatalca",
+      "status": "existing",
+      "neighbors": "Çatalca; Silivri, Arnavutköy ve Büyükçekmece ile komşudur."
+    },
+    {
+      "slug": "esenyurt-ikinci-el-esya-alim-satim",
+      "name": "Esenyurt",
+      "status": "existing",
+      "neighbors": "Esenyurt; Avcılar, Küçükçekmece, Başakşehir, Beylikdüzü ve Büyükçekmece ile komşudur."
+    },
+    {
+      "slug": "florya-ikinci-el-esya-alim-satim",
+      "name": "Florya",
+      "status": "existing",
+      "neighbors": "Florya; Bakırköy ilçesine bağlı, sahile yakın bir bölgedir."
+    },
+    {
+      "slug": "kucukcekmece-ikinci-el-esya-alim-satim",
+      "name": "Küçükçekmece",
+      "status": "existing",
+      "neighbors": "Küçükçekmece; Bakırköy, Bahçelievler, Bağcılar, Esenyurt ve Avcılar ile komşudur."
+    }
   ],
   "districts": [
     {
