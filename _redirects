@@ -69,11 +69,11 @@
 
 # 2) Kalan sayfalarda .html uzantısını kaldır (yinelenen URL sorunu)
 #    Netlify splat SONDA olmalı; '/*.html' deseni çalışmıyor -> tek tek yazıldı.
-/esenyurt-ikinci-el-esya-alim-satim.html  /esenyurt-ikinci-el-esya-alim-satim  301!
+/avcilar-ikinci-el-esya-alim-satim.html  /avcilar-ikinci-el-esya-alim-satim  301!
 /florya-ikinci-el-esya-alim-satim.html  /florya-ikinci-el-esya-alim-satim  301!
+/kucukcekmece-ikinci-el-esya-alim-satim.html  /kucukcekmece-ikinci-el-esya-alim-satim  301!
+/silivri-ikinci-el-esya-alim-satim.html  /silivri-ikinci-el-esya-alim-satim  301!
+/esenyurt-ikinci-el-esya-alim-satim.html  /esenyurt-ikinci-el-esya-alim-satim  301!
 /basaksehir-ikinci-el-esya-alim-satim.html  /basaksehir-ikinci-el-esya-alim-satim  301!
 /buyukcekmece-ikinci-el-esya-alim-satim.html  /buyukcekmece-ikinci-el-esya-alim-satim  301!
-/silivri-ikinci-el-esya-alim-satim.html  /silivri-ikinci-el-esya-alim-satim  301!
-/kucukcekmece-ikinci-el-esya-alim-satim.html  /kucukcekmece-ikinci-el-esya-alim-satim  301!
-/avcilar-ikinci-el-esya-alim-satim.html  /avcilar-ikinci-el-esya-alim-satim  301!
 /beylikduzu-ikinci-el-esya-alim-satim.html  /beylikduzu-ikinci-el-esya-alim-satim  301!

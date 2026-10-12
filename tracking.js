@@ -27,7 +27,9 @@
 
   // ---- configuration -------------------------------------------------------
   var AW_ID = "AW-609406158"; // the Ads tag already present in every page
-  var GA4_ID = ""; // optional: paste "G-XXXXXXXXXX" if you add a GA4 property
+  // GA4 is installed as a second gtag destination in the <head> of every page.
+  // Never call gtag("config", GA4) here too — a second config counts a second page_view.
+  var GA4_ID = "";
   var STORE_KEY = "medine_attr";
   var STORE_DAYS = 90;
 
@@ -167,7 +169,8 @@
   // ---- 3. boot -------------------------------------------------------------
   function boot() {
     if (isFile()) return;
-    if (GA4_ID && typeof window.gtag === "function") window.gtag("config", GA4_ID);
+    // GA4 is configured by the page <head> snippet — configuring it again here
+    // would send a duplicate page_view to GA4.
     decorateWhatsAppLinks();
     document.addEventListener("click", onClick, true);
     watchEngagement();
