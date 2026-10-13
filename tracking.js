@@ -17,10 +17,12 @@
  *   3. Safety — every call is guarded, nothing blocks the click, and if the page is
  *      opened from file:// the script does nothing.
  *
- * TO FINISH SETUP: paste the conversion labels from Google Ads (Tools > Conversions)
- * into CONV below. See docs/google-ads-tracking.md for the exact clicks. Until they
- * are filled in, the events still fire for GA4/reporting but no Ads conversion is
- * recorded.
+ * CONVERSION LABELS ARE SET (13 Oct 2026) — Google Ads action "Contact" (Website),
+ * label 5JK6CPmqn6ocEM6Zy6IC. Both whatsapp_click and call_click fire that ONE
+ * action on purpose, so Smart Bidding optimises towards "any contact", which is
+ * the real business goal. To split channels later, create a second Website action
+ * in Google Ads (Goals > Conversions) and paste its label into the matching slot.
+ * `engaged` stays empty — it is a reach signal for remarketing, not a lead.
  */
 (function () {
   "use strict";
@@ -33,10 +35,14 @@
   var STORE_KEY = "medine_attr";
   var STORE_DAYS = 90;
 
-  // Ads conversion labels, format "AW-609406158/AbC-D_efGh". Paste yours here.
+  // Ads conversion labels, format "AW-609406158/AbC-D_efGh".
+  // Taken from Google Ads > Goals > Conversions > Contacts > Contact > Tag setup.
+  // One action serves BOTH lead channels for now: Smart Bidding then optimises
+  // for "any contact" (WhatsApp click OR phone tap), which is the real business
+  // goal. Split into two actions later if per-channel reporting is wanted.
   var CONV = {
-    whatsapp_click: "", // TODO: WhatsApp conversion action
-    call_click: "", //     TODO: phone-call conversion action
+    whatsapp_click: "AW-609406158/5JK6CPmqn6ocEM6Zy6IC", // Contact (Website)
+    call_click: "AW-609406158/5JK6CPmqn6ocEM6Zy6IC", //     Contact (Website) — same action on purpose
     engaged: "" //         leave empty unless you want a soft conversion action
   };
 
