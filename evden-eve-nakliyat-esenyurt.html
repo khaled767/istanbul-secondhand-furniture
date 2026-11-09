@@ -32,6 +32,7 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/nakliyat.css">
 
   <script type="application/ld+json">
 {
@@ -143,7 +144,7 @@
 }
   </script>
 </head>
-<body>
+<body class="nk">
 
   <header class="navbar">
     <div class="logo">
@@ -159,110 +160,197 @@
     </nav>
   </header>
 
-  <main style="padding-top: 100px; max-width: 900px; margin: auto; padding-left: 20px; padding-right: 20px;">
-    <nav aria-label="breadcrumb" style="font-size:14px;color:#777;margin-bottom:14px;">
-      <a href="/" style="color:#7b4f2c;">Ana Sayfa</a> › <span>Esenyurt Evden Eve Nakliyat</span>
-    </nav>
-
-    <section class="about" style="margin-top: 20px;">
-      <h1>Esenyurt Evden Eve Nakliyat — Kapıdan Kapıya Ev Taşıma</h1>
-      <p style="font-size: 18px; line-height: 1.8; color: #444; margin-top: 15px;">Esenyurt, Türkiye'nin nüfus bakımından en kalabalık ilçesi ve taşınma hareketinin en yoğun yaşandığı yer. Medine Mobilya olarak Esenyurt içinde ve Esenyurt–Beylikdüzü hattında kendi aracımız ve kendi yükleme-indirme ekibimizle evden eve nakliyat yapıyoruz. Mağazamız Esenyurt Mehterçeşme'de olduğu için ilçenin her mahallesine aynı gün ekip çıkarabiliyoruz; yolu ve ekibi önceden planladığımız için bekleme olmuyor. İsterseniz uzman ekibimiz gardırop, baza ve dolap gibi parçaları söküp yeni evde kuruyor; paketlemeyi de talep ettiğinizde ayrı fiyatla yapıyoruz.</p>
-
-      <div style="background: #fdf3e7; border: 2px solid #d98324; padding: 20px; border-radius: 12px; margin-top: 25px;">
-        <h2 style="color: #5a3921; font-size: 19px; margin: 0;"><i class="fas fa-map-marked-alt"></i> Hizmet bölgemiz: yalnızca Esenyurt ve Beylikdüzü</h2>
-        <p style="margin-top: 10px; font-size: 15px; line-height: 1.7; color: #444;">
-          Evden eve nakliyat hizmetimiz <strong>sadece Esenyurt ve Beylikdüzü</strong> sınırları içinde ve bu iki ilçe arasında geçerlidir.
-          Bu iki ilçenin dışındaki adreslere (Avcılar, Bağcılar, Sultangazi, Küçükçekmece, Büyükçekmece ve diğer ilçeler) taşıma yapmıyoruz.
-          Lütfen teklif istemeden önce adresinizin bu iki ilçede olduğunu kontrol edin.
-        </p>
+  <main class="nk-main">
+    <section class="nk-hero">
+      <div class="nk-wrap">
+        <nav aria-label="breadcrumb" style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:16px;">
+          <a href="/" style="color:rgba(255,255,255,.75);text-decoration:none;">Ana Sayfa</a> › <span>Esenyurt Evden Eve Nakliyat</span>
+        </nav>
+        <div class="nk-hero__grid">
+          <div>
+            <span class="nk-pill"><i class="fas fa-location-dot"></i> Esenyurt · Beylikdüzü</span>
+            <h1>Esenyurt Evden Eve Nakliyat<br>Kapıdan Kapıya Ev Taşıma</h1>
+            <p class="nk-hero__sub">Kendi nakliye aracımız ve kendi yükleme-indirme ekibimizle kapıdan kapıya taşıma. Eşyaların fotoğraflarını gönderin, aynı gün net fiyat alın — fiyat taşınma günü değişmez.</p>
+            <div class="nk-cta-row">
+              <a href="https://wa.me/905386467971?text=Merhaba%2C%20evden%20eve%20nakliyat%20i%C3%A7in%20fiyat%20teklifi%20istiyorum.%0A1%29%20Ta%C5%9F%C4%B1naca%C4%9F%C4%B1m%20il%C3%A7e/mahalle%3A%20Esenyurt%0A2%29%20%C3%87%C4%B1k%C4%B1%C5%9F%20adresi%20ve%20kat%20%28asans%C3%B6r%20var%20m%C4%B1%29%3A%0A3%29%20Var%C4%B1%C5%9F%20adresi%20ve%20kat%3A%0A4%29%20E%C5%9Fya%20listesi%20%28ka%C3%A7%20oda%2C%20b%C3%BCy%C3%BCk%20par%C3%A7alar%29%3A%0A5%29%20Ta%C5%9F%C4%B1nma%20tarihi%3A%0A6%29%20S%C3%B6kme-takma%20ve%20paketleme%20ister%20misiniz%3F" target="_blank" rel="noopener" class="nk-btn nk-btn--wa"><i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al</a>
+              <a href="tel:+905386467971" class="nk-btn nk-btn--call"><i class="fas fa-phone"></i> +90 538 646 79 71</a>
+            </div>
+            <p class="nk-hero__note"><i class="fas fa-circle-info"></i> Yalnızca Esenyurt ve Beylikdüzü — iki ilçe ve arası.</p>
+          </div>
+          <aside class="nk-card-spec">
+            <h2>Hizmet özeti</h2>
+            <div class="nk-spec"><i class="fas fa-map-location-dot"></i><div><b>Hizmet bölgesi</b><span>Esenyurt ve Beylikdüzü (ilçe içi + iki ilçe arası)</span></div></div>
+            <div class="nk-spec"><i class="fas fa-truck-fast"></i><div><b>Araç ve ekip</b><span>Kendi nakliye aracımız, kendi yükleme-indirme ekibimiz</span></div></div>
+            <div class="nk-spec"><i class="fas fa-file-invoice-dollar"></i><div><b>Fiyat</b><span>Fotoğraf ve parça listesine göre aynı gün net fiyat</span></div></div>
+            <div class="nk-spec"><i class="fas fa-screwdriver-wrench"></i><div><b>Sökme-takma</b><span>Kendi uzman ekibimiz — talep üzerine, ayrı kalem</span></div></div>
+          </aside>
+        </div>
       </div>
+    </section>
 
-      <div style="background: #f1e7dc; padding: 25px; border-radius: 12px; margin-top: 25px; text-align: center;">
-        <h3 style="color: #5a3921; font-size: 22px;">Esenyurt içi taşınma için fiyat alın</h3>
-        <p style="margin-top: 10px; font-size: 16px;">Eşyalarınızın fotoğraflarını ve daire bilgisini WhatsApp ile gönderin; aynı gün net fiyat verelim.</p>
-        <a href="https://wa.me/905386467971?text=Merhaba%2C%20evden%20eve%20nakliyat%20i%C3%A7in%20fiyat%20teklifi%20istiyorum.%0A1%29%20Ta%C5%9F%C4%B1naca%C4%9F%C4%B1m%20il%C3%A7e/mahalle%3A%20Esenyurt%0A2%29%20%C3%87%C4%B1k%C4%B1%C5%9F%20adresi%20ve%20kat%20%28asans%C3%B6r%20var%20m%C4%B1%29%3A%0A3%29%20Var%C4%B1%C5%9F%20adresi%20ve%20kat%3A%0A4%29%20E%C5%9Fya%20listesi%20%28ka%C3%A7%20oda%2C%20b%C3%BCy%C3%BCk%20par%C3%A7alar%29%3A%0A5%29%20Ta%C5%9F%C4%B1nma%20tarihi%3A%0A6%29%20S%C3%B6kme-takma%20ve%20paketleme%20ister%20misiniz%3F" target="_blank" rel="noopener" class="hero-btn" style="margin-top: 15px; display: inline-block;">
-          <i class="fab fa-whatsapp"></i> WhatsApp ile Fiyat Al
-        </a>
-        <a href="tel:+905386467971" class="hero-btn" style="margin-top: 15px; display: inline-block; margin-left: 10px;"><i class="fas fa-phone"></i> +90 538 646 79 71</a>
+    <div class="nk-wrap">
+      <div class="nk-trust">
+        <div class="nk-trust__item"><i class="fas fa-bolt"></i><b>Aynı gün taşıma</b><span>Araç ve ekip Esenyurt'ta olduğu için çoğu taşınma aynı gün yapılır.</span></div>
+        <div class="nk-trust__item"><i class="fas fa-receipt"></i><b>Fiyat günü değişmez</b><span>Fotoğraf ve parça listesine göre verilen fiyat taşınma günü aynı kalır.</span></div>
+        <div class="nk-trust__item"><i class="fas fa-stairs"></i><b>Kat planı baştan</b><span>Asansör, merdiven ve araç yaklaşması fiyata baştan dahil.</span></div>
+        <div class="nk-trust__item"><i class="fas fa-calendar-check"></i><b>Ay sonu yoğunluğu</b><span>Kira dönüşü haftalarına alışkınız; tarihi önceden planlıyoruz.</span></div>
       </div>
+    </div>
 
-      <h2 style="margin-top: 40px; text-align: left;">Taşımaya neler dahil?</h2>
-      <ul style="line-height: 2; font-size: 16px; margin-left: 20px; color: #333; margin-top: 15px;">
+    <section class="nk-section nk-section--tight">
+      <div class="nk-wrap">
+        <div class="nk-notice">
+          <i class="fas fa-map-marked-alt"></i>
+          <div>
+            <h3>Hizmet bölgemiz: yalnızca Esenyurt ve Beylikdüzü</h3>
+            <p>
+              Evden eve nakliyat hizmetimiz <strong>sadece Esenyurt ve Beylikdüzü</strong> sınırları içinde ve bu iki ilçe arasında geçerlidir.
+              Bu iki ilçenin dışındaki adreslere (Avcılar, Bağcılar, Sultangazi, Küçükçekmece, Büyükçekmece ve diğer ilçeler) taşıma yapmıyoruz.
+              Lütfen teklif istemeden önce adresinizin bu iki ilçede olduğunu kontrol edin.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nk-section">
+      <div class="nk-wrap">
+        <h2><span class="nk-bar"></span>Esenyurt evden eve nakliyat</h2>
+        <p class="nk-lead">Esenyurt, Türkiye'nin nüfus bakımından en kalabalık ilçesi ve taşınma hareketinin en yoğun yaşandığı yer. Medine Mobilya olarak Esenyurt içinde ve Esenyurt–Beylikdüzü hattında kendi aracımız ve kendi yükleme-indirme ekibimizle evden eve nakliyat yapıyoruz. Mağazamız Esenyurt Mehterçeşme'de olduğu için ilçenin her mahallesine aynı gün ekip çıkarabiliyoruz; yolu ve ekibi önceden planladığımız için bekleme olmuyor. İsterseniz uzman ekibimiz gardırop, baza ve dolap gibi parçaları söküp yeni evde kuruyor; paketlemeyi de talep ettiğinizde ayrı fiyatla yapıyoruz.</p>
+      </div>
+    </section>
+
+    <section class="nk-section" style="padding-top:0;">
+      <div class="nk-wrap">
+        <h2><span class="nk-bar"></span>Taşımaya neler dahil?</h2>
+        <p class="nk-lead">Fiyata dahil olan işler, talep üzerine ayrı fiyatlandırılan hizmetler ve kapsam dışındaki işler — hepsi baştan net.</p>
+        <div class="nk-cards-2">
+          <div class="nk-card">
+            <h3><i class="fas fa-circle-check" style="color:#1faa53;"></i> Taşıma fiyatına dahil</h3>
+            <p class="nk-hint">Aşağıdaki işler taşıma bedeline dahildir.</p>
+            <ul class="nk-list nk-list--yes">
             <li>Kendi nakliye aracımız — Esenyurt içi ve Esenyurt–Beylikdüzü hattı</li>
             <li>Kendi yükleme ve indirme ekibimiz (kat içinden araca, araçtan yeni daireye)</li>
             <li>Eşyaların araçta kaymayacak şekilde yerleştirilmesi ve sabitlenmesi</li>
             <li>Merdiven veya asansörle kattan indirme ve yeni binada kata çıkarma</li>
             <li>Taşınma günü tek seferde planlanmış tek araç ve tek ekip</li>
-      </ul>
-
-      <h2 style="margin-top: 40px; text-align: left;">Talep üzerine eklenen hizmetler (ayrı fiyat)</h2>
-      <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 10px;">
-        Bu hizmetleri istemek zorunda değilsiniz. İstediğinizde <strong>taşıma bedeline ek olarak</strong> ayrı hesaplanır
-        ve taşınma gününden önce tutarı net olarak söylenir.
-      </p>
-      <ul style="line-height: 2; font-size: 16px; margin-left: 20px; color: #333; margin-top: 15px;">
+            </ul>
+          </div>
+          <div class="nk-card nk-card--opt">
+            <h3><i class="fas fa-circle-plus" style="color:#b57212;"></i> Talep üzerine — ayrı fiyat</h3>
+            <p class="nk-hint">Bu hizmetleri istemek zorunda değilsiniz. İstediğinizde <strong>taşıma bedeline ek olarak</strong> ayrı hesaplanır ve taşınma gününden önce tutarı net olarak söylenir.</p>
+            <ul class="nk-list nk-list--opt">
             <li>Mobilya sökme ve takma — kendi uzman ekibimiz söküyor ve yeni evde kuruyor</li>
             <li>Paketleme (kutu, streç film, koruyucu malzeme) — talep üzerine</li>
             <li>Beyaz eşya ve cam/ayna koruma paketlemesi — talep üzerine</li>
-      </ul>
-
-      <h2 style="margin-top: 40px; text-align: left;">Neler dahil değil?</h2>
-      <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 10px;">
-        Bunları baştan yazıyoruz ki taşınma günü sürpriz olmasın. Aşağıdaki işler hizmet kapsamımızda değildir;
-        paketlemeyi talep etmezseniz eşyalarınızın kutulanmış olması gerekir.
-      </p>
-      <ul style="line-height: 2; font-size: 16px; margin-left: 20px; color: #333; margin-top: 15px;">
+            </ul>
+          </div>
+        </div>
+        <div class="nk-card nk-card--no" style="margin-top:22px;">
+          <h3><i class="fas fa-circle-minus" style="color:#98a2ae;"></i> Neler dahil değil?</h3>
+          <p class="nk-hint">Bunları baştan yazıyoruz ki taşınma günü sürpriz olmasın. Aşağıdaki işler hizmet kapsamımızda değildir; paketlemeyi talep etmezseniz eşyalarınızın kutulanmış olması gerekir.</p>
+          <ul class="nk-list nk-list--no">
             <li>Esenyurt ve Beylikdüzü dışına taşıma yok</li>
             <li>Depolama (eşya emaneti) hizmeti yok</li>
             <li>Dış cephe mobil asansör / vinç ile cepheden indirme yok</li>
-      </ul>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <h2 style="margin-top: 40px; text-align: left;">Fiyatı ne belirler?</h2>
-      <ul style="line-height: 2; font-size: 16px; margin-left: 20px; color: #333; margin-top: 15px;">
+    <section class="nk-section" style="background:#fff;border-top:1px solid #e3e8ee;border-bottom:1px solid #e3e8ee;">
+      <div class="nk-wrap">
+        <h2><span class="nk-bar"></span>Nasıl çalışıyoruz?</h2>
+        <p class="nk-lead">Dört adım: fotoğraf, net fiyat, plan, taşıma.</p>
+        <div class="nk-steps">
+          <div class="nk-step"><div class="nk-step__n">1</div><b>Fotoğraf gönderin</b><span>Eşyaların ve dairenin fotoğraflarını ya da oda oda listeyi WhatsApp'tan iletin.</span></div>
+          <div class="nk-step"><div class="nk-step__n">2</div><b>Aynı gün net fiyat</b><span>Hacim, kat ve mesafeye göre fiyatı aynı gün bildiriyoruz.</span></div>
+          <div class="nk-step"><div class="nk-step__n">3</div><b>Günü planlayın</b><span>Taşınma gününü ve saati birlikte belirliyoruz; araç ve ekip ona göre ayrılıyor.</span></div>
+          <div class="nk-step"><div class="nk-step__n">4</div><b>Biz taşıyoruz</b><span>Kendi aracımız ve ekibimizle kapıdan kapıya taşıma, yeni evde yerleştirme.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nk-section">
+      <div class="nk-wrap">
+        <h2><span class="nk-bar"></span>Fiyatı ne belirler?</h2>
+        <p class="nk-lead">Fiyat kişiye göre değil, şu beş kaleme göre hesaplanır.</p>
+        <div class="nk-factors">
+          <div class="nk-factor"><i class="fas fa-couch"></i><span>Eşya hacmi</span></div>
+          <div class="nk-factor"><i class="fas fa-stairs"></i><span>Kat ve asansör durumu</span></div>
+          <div class="nk-factor"><i class="fas fa-truck-ramp-box"></i><span>Araç yaklaşma mesafesi</span></div>
+          <div class="nk-factor"><i class="fas fa-route"></i><span>Mesafe</span></div>
+          <div class="nk-factor"><i class="fas fa-screwdriver-wrench"></i><span>Sökme-takma / paketleme</span></div>
+        </div>
+        <div class="nk-card" style="margin-top:18px;">
+          <ul class="nk-list nk-list--yes">
             <li>Eşya hacmi: kaç odalı ev, kaç büyük parça (koltuk takımı, gardırop, baza, beyaz eşya)</li>
             <li>Kat durumu: kaçıncı kat, bina asansörü eşya taşımaya uygun mu</li>
             <li>Araç yaklaşma mesafesi: bina önünde park imkânı var mı, eşya sokakta ne kadar taşınacak</li>
             <li>Mesafe: Esenyurt içi mi, Esenyurt–Beylikdüzü arası mı</li>
             <li>Sökme-takma veya paketleme talep edilirse ayrı kalem olarak fiyata eklenir</li>
-      </ul>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <h2 style="margin-top: 40px; text-align: left;">Esenyurt bölgesinde taşıma — pratik notlar</h2>
-      <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 14px;">Esenyurt'ta konutların neredeyse tamamı apartman dairesi ve binaların önemli bölümü 5–8 katlı. Bu binalarda asansör olsa bile çoğu zaman dar ve eşya taşımaya uygun değil; koltuk takımı, gardırop ve baza gibi parçalar merdivenden indirilmek zorunda kalıyor. Bu yüzden Esenyurt'ta taşınmanın süresini belirleyen şey araç değil, kattan indirme işidir. Ekibimizi ve süreyi buna göre planlıyoruz.</p>
-      <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 14px;">İlçenin yoğun yapısı bir başka pratik sorunu beraberinde getiriyor: sokaklar dar, araç park edecek yer sınırlı. Taşınma günü aracın bina önüne yaklaşamaması, eşyanın sokağın ortasında bekletilmesi demek. Bu yüzden adresi önceden konuşuyor, aracın yanaşabileceği noktayı ve gerekirse taşıma mesafesini fiyata baştan dahil ediyoruz.</p>
-      <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 14px;">Esenyurt'ta kiracı oranı yüksek olduğu için taşınmalar genellikle hızlı planlanır: sözleşme biter, birkaç gün içinde ev boşaltılır. Bu tempoya alışkınız. Eşyalarınızı toplayıp kutuladığınız anda aracı ve ekibi ayarlıyoruz; aynı gün içinde taşıma yapılabilir.</p>
-      <p style="font-size: 16px; line-height: 1.8; color: #444; margin-top: 14px;">Bir de takvim meselesi var: Esenyurt'ta taşınmalar ay sonunda yoğunlaşır, çünkü kira sözleşmeleri ay başında başlar. O haftalarda hem ekip hem araç sıkışır. Tarihiniz esnekse ayın ilk yarısını seçmeniz hem daha rahat plan yapmanızı hem daha iyi fiyat almanızı sağlar.</p>
+    <section class="nk-section" style="padding-top:0;">
+      <div class="nk-wrap">
+        <h2><span class="nk-bar"></span>Esenyurt bölgesinde taşıma — pratik notlar</h2>
+      <p class="nk-prose-p">Esenyurt'ta konutların neredeyse tamamı apartman dairesi ve binaların önemli bölümü 5–8 katlı. Bu binalarda asansör olsa bile çoğu zaman dar ve eşya taşımaya uygun değil; koltuk takımı, gardırop ve baza gibi parçalar merdivenden indirilmek zorunda kalıyor. Bu yüzden Esenyurt'ta taşınmanın süresini belirleyen şey araç değil, kattan indirme işidir. Ekibimizi ve süreyi buna göre planlıyoruz.</p>
+      <p class="nk-prose-p">İlçenin yoğun yapısı bir başka pratik sorunu beraberinde getiriyor: sokaklar dar, araç park edecek yer sınırlı. Taşınma günü aracın bina önüne yaklaşamaması, eşyanın sokağın ortasında bekletilmesi demek. Bu yüzden adresi önceden konuşuyor, aracın yanaşabileceği noktayı ve gerekirse taşıma mesafesini fiyata baştan dahil ediyoruz.</p>
+      <p class="nk-prose-p">Esenyurt'ta kiracı oranı yüksek olduğu için taşınmalar genellikle hızlı planlanır: sözleşme biter, birkaç gün içinde ev boşaltılır. Bu tempoya alışkınız. Eşyalarınızı toplayıp kutuladığınız anda aracı ve ekibi ayarlıyoruz; aynı gün içinde taşıma yapılabilir.</p>
+      <p class="nk-prose-p">Bir de takvim meselesi var: Esenyurt'ta taşınmalar ay sonunda yoğunlaşır, çünkü kira sözleşmeleri ay başında başlar. O haftalarda hem ekip hem araç sıkışır. Tarihiniz esnekse ayın ilk yarısını seçmeniz hem daha rahat plan yapmanızı hem daha iyi fiyat almanızı sağlar.</p>
+      </div>
+    </section>
 
-      <h2 style="margin-top: 40px; text-align: left;">Esenyurt nakliyat — sık sorulan sorular</h2>
-      <h3 style="margin-top:22px;">Esenyurt'un hangi mahallelerine nakliyat yapıyorsunuz?</h3>
-      <p>Akçaburgaz, Akevler, Akşemseddin, Ardıçlı, Aşık Veysel, Atatürk, Bağlarçeşme, Balıkyolu, Mehterçeşme dahil Esenyurt'un tamamına geliyoruz. Mahalleniz listede yoksa yazın; hizmet alanımız ilçenin bütünü.</p>
-      <h3 style="margin-top:22px;">Fiyat nasıl belirleniyor?</h3>
-      <p>Üç şey belirliyor: eşyanın hacmi, çıkış ve varış katları (asansör durumu) ve mesafe. WhatsApp'tan eşyaların fotoğraflarını veya oda oda bir liste gönderin; aynı gün net fiyat veriyoruz. Fiyat taşınma günü değişmez.</p>
-      <h3 style="margin-top:22px;">Mobilyaları söküp takıyor musunuz, eşyaları paketliyor musunuz?</h3>
-      <p>Evet, ikisini de yapıyoruz ama şekilleri farklı. Sökme-takmayı kendi uzman ekibimiz yapıyor: gardırop, baza, yatak başlığı ve dolap gibi parçaları söküp yeni evde kuruyoruz. Paketleme de var, ancak talep üzerine yapılıyor ve fiyata ayrı ekleniyor; kutu, streç film ve koruyucu malzeme o hizmete dahil. Sadece taşıma isterseniz fiyat yükleme-indirme üzerinden hesaplanır.</p>
-      <h3 style="margin-top:22px;">Sökme-takma ve paketleme fiyatı ayrı mı?</h3>
-      <p>Evet. Taşıma fiyatı her zaman aynı mantıkla hesaplanır; sökme-takma ve paketleme istediğinizde bunlar ayrı kalem olarak eklenir. Taşınmadan önce her kalemin tutarını net olarak söyleriz, sonradan ek ücret çıkmaz.</p>
-      <h3 style="margin-top:22px;">Beylikdüzü'ne taşınma yapıyor musunuz?</h3>
-      <p>Evet. Esenyurt'tan Beylikdüzü'ne ve Beylikdüzü'nden Esenyurt'a taşıma yapıyoruz; hizmet bölgemiz bu iki ilçedir. Bu iki ilçenin dışındaki adreslere taşıma yapmıyoruz.</p>
-      <h3 style="margin-top:22px;">Aynı gün taşınabilir miyim?</h3>
-      <p>Çoğu zaman evet. Araç ve ekip Esenyurt içinde olduğu için sabah teyit edilen taşınmaları aynı gün yapabiliyoruz. Ay sonu ve hafta sonu yoğunluğunda bir gün önceden aramanızı öneririz.</p>
+    <section class="nk-section" style="background:#fff;border-top:1px solid #e3e8ee;border-bottom:1px solid #e3e8ee;">
+      <div class="nk-wrap">
+        <h2><span class="nk-bar"></span>Esenyurt nakliyat — sık sorulan sorular</h2>
+        <p class="nk-lead">En çok sorulan altı soru ve net cevapları.</p>
+        <div class="nk-faq">
+      <details><summary>Esenyurt'un hangi mahallelerine nakliyat yapıyorsunuz?</summary><div class="nk-answer">Akçaburgaz, Akevler, Akşemseddin, Ardıçlı, Aşık Veysel, Atatürk, Bağlarçeşme, Balıkyolu, Mehterçeşme dahil Esenyurt'un tamamına geliyoruz. Mahalleniz listede yoksa yazın; hizmet alanımız ilçenin bütünü.</div></details>
+      <details><summary>Fiyat nasıl belirleniyor?</summary><div class="nk-answer">Üç şey belirliyor: eşyanın hacmi, çıkış ve varış katları (asansör durumu) ve mesafe. WhatsApp'tan eşyaların fotoğraflarını veya oda oda bir liste gönderin; aynı gün net fiyat veriyoruz. Fiyat taşınma günü değişmez.</div></details>
+      <details><summary>Mobilyaları söküp takıyor musunuz, eşyaları paketliyor musunuz?</summary><div class="nk-answer">Evet, ikisini de yapıyoruz ama şekilleri farklı. Sökme-takmayı kendi uzman ekibimiz yapıyor: gardırop, baza, yatak başlığı ve dolap gibi parçaları söküp yeni evde kuruyoruz. Paketleme de var, ancak talep üzerine yapılıyor ve fiyata ayrı ekleniyor; kutu, streç film ve koruyucu malzeme o hizmete dahil. Sadece taşıma isterseniz fiyat yükleme-indirme üzerinden hesaplanır.</div></details>
+      <details><summary>Sökme-takma ve paketleme fiyatı ayrı mı?</summary><div class="nk-answer">Evet. Taşıma fiyatı her zaman aynı mantıkla hesaplanır; sökme-takma ve paketleme istediğinizde bunlar ayrı kalem olarak eklenir. Taşınmadan önce her kalemin tutarını net olarak söyleriz, sonradan ek ücret çıkmaz.</div></details>
+      <details><summary>Beylikdüzü'ne taşınma yapıyor musunuz?</summary><div class="nk-answer">Evet. Esenyurt'tan Beylikdüzü'ne ve Beylikdüzü'nden Esenyurt'a taşıma yapıyoruz; hizmet bölgemiz bu iki ilçedir. Bu iki ilçenin dışındaki adreslere taşıma yapmıyoruz.</div></details>
+      <details><summary>Aynı gün taşınabilir miyim?</summary><div class="nk-answer">Çoğu zaman evet. Araç ve ekip Esenyurt içinde olduğu için sabah teyit edilen taşınmaları aynı gün yapabiliyoruz. Ay sonu ve hafta sonu yoğunluğunda bir gün önceden aramanızı öneririz.</div></details>
+        </div>
+      </div>
+    </section>
 
-      <h2 style="margin-top: 40px; text-align: left;">Diğer hizmetlerimiz</h2>
-      <ul style="line-height: 2; font-size: 16px; margin-left: 20px; margin-top: 15px; list-style: none;">
-        <li><a href="/evden-eve-nakliyat-beylikduzu" style="color: #7b4f2c; font-weight: bold;">Beylikdüzü Evden Eve Nakliyat</a></li>
-        <li><a href="/esenyurt-ikinci-el-esya-alim-satim" style="color: #7b4f2c; font-weight: bold;">Esenyurt İkinci El Eşya Alım Satım — komple ev eşyanızı satın alıyoruz</a></li>
-        <li><a href="/" style="color: #7b4f2c; font-weight: bold;">Ana sayfa — tüm hizmet bölgeleri</a></li>
-      </ul>
+    <section class="nk-section">
+      <div class="nk-wrap">
+        <div class="nk-cta-band">
+          <div>
+            <h2>Esenyurt içi taşınma için fiyat alın</h2>
+            <p>Eşyalarınızın fotoğraflarını ve daire bilgisini WhatsApp ile gönderin; aynı gün net fiyat verelim.</p>
+          </div>
+          <div class="nk-cta-row">
+            <a href="https://wa.me/905386467971?text=Merhaba%2C%20evden%20eve%20nakliyat%20i%C3%A7in%20fiyat%20teklifi%20istiyorum.%0A1%29%20Ta%C5%9F%C4%B1naca%C4%9F%C4%B1m%20il%C3%A7e/mahalle%3A%20Esenyurt%0A2%29%20%C3%87%C4%B1k%C4%B1%C5%9F%20adresi%20ve%20kat%20%28asans%C3%B6r%20var%20m%C4%B1%29%3A%0A3%29%20Var%C4%B1%C5%9F%20adresi%20ve%20kat%3A%0A4%29%20E%C5%9Fya%20listesi%20%28ka%C3%A7%20oda%2C%20b%C3%BCy%C3%BCk%20par%C3%A7alar%29%3A%0A5%29%20Ta%C5%9F%C4%B1nma%20tarihi%3A%0A6%29%20S%C3%B6kme-takma%20ve%20paketleme%20ister%20misiniz%3F" target="_blank" rel="noopener" class="nk-btn nk-btn--wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+905386467971" class="nk-btn nk-btn--gold"><i class="fas fa-phone"></i> +90 538 646 79 71</a>
+          </div>
+        </div>
 
-      <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
-        <p style="font-weight: bold; color: #5a3921;">
-          <i class="fas fa-map-marker-alt"></i> Mağaza adresimiz: Mehterçeşme, Cumhuriyet Cd No:28, 34515 Esenyurt/İstanbul
-        </p>
-        <p style="margin-top: 8px;">
-          <a href="/" style="color: #7b4f2c; font-weight: bold; text-decoration: underline;">← Ana sayfaya dön</a>
+        <h2 style="margin-top:46px;"><span class="nk-bar"></span>Diğer hizmetlerimiz</h2>
+        <ul class="nk-links">
+          <li><a href="/evden-eve-nakliyat-beylikduzu">Beylikdüzü Evden Eve Nakliyat</a></li>
+          <li><a href="/esenyurt-ikinci-el-esya-alim-satim">Esenyurt İkinci El Eşya Alım Satım</a></li>
+          <li><a href="/">Ana sayfa — tüm hizmet bölgeleri</a></li>
+        </ul>
+
+        <p class="nk-address">
+          <b><i class="fas fa-map-marker-alt"></i> Mağaza adresimiz:</b> Mehterçeşme, Cumhuriyet Cd No:28, 34515 Esenyurt/İstanbul
         </p>
       </div>
     </section>
   </main>
+
+  <div class="nk-sticky">
+    <a href="https://wa.me/905386467971?text=Merhaba%2C%20evden%20eve%20nakliyat%20i%C3%A7in%20fiyat%20teklifi%20istiyorum.%0A1%29%20Ta%C5%9F%C4%B1naca%C4%9F%C4%B1m%20il%C3%A7e/mahalle%3A%20Esenyurt%0A2%29%20%C3%87%C4%B1k%C4%B1%C5%9F%20adresi%20ve%20kat%20%28asans%C3%B6r%20var%20m%C4%B1%29%3A%0A3%29%20Var%C4%B1%C5%9F%20adresi%20ve%20kat%3A%0A4%29%20E%C5%9Fya%20listesi%20%28ka%C3%A7%20oda%2C%20b%C3%BCy%C3%BCk%20par%C3%A7alar%29%3A%0A5%29%20Ta%C5%9F%C4%B1nma%20tarihi%3A%0A6%29%20S%C3%B6kme-takma%20ve%20paketleme%20ister%20misiniz%3F" target="_blank" rel="noopener" class="s-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="tel:+905386467971" class="s-tel"><i class="fas fa-phone"></i> Hemen Ara</a>
+  </div>
+
 
   <footer>
     <p><strong>SPOTÇU İSTANBUL</strong> — Medine Mobilya | Esenyurt Evden Eve Nakliyat</p>
