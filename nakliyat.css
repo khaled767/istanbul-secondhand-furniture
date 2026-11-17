@@ -253,6 +253,12 @@ body.nk .nav-cta:hover { background: #1b4570 !important; }
   background: #fff; border: 1px solid var(--nk-line); border-left: 4px solid var(--nk-gold);
   border-radius: 12px; padding: 13px 18px; margin: 0 0 24px;
   font-size: 15px; color: var(--nk-ink);
+  text-decoration: none; transition: box-shadow .15s ease, border-color .15s ease;
+}
+.nk-reviews:hover, .nk-reviews:focus { border-color: var(--nk-gold); box-shadow: 0 6px 18px rgba(13,36,56,.10); }
+.nk-reviews__more {
+  margin-left: auto; font-weight: 800; color: #b57212;
+  white-space: nowrap; font-size: 14.5px;
 }
 .nk-reviews__stars { color: #f5b301; letter-spacing: 2px; font-size: 16px; }
 .nk-reviews b { font-size: 15.5px; }
